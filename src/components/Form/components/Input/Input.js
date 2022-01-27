@@ -20,7 +20,6 @@ class Input extends PureComponent {
     }
 
     render() {
-        console.log('Render input ', this.props.name)
         return (
             <div className='Input'>
                 <label className='Input-label' htmlFor={this.getId()}>{this.props.label}</label>

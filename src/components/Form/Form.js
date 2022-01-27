@@ -89,7 +89,7 @@ class Form extends Component {
 
     render() {
         const { errors, fields } = this.state
-        console.log('Render ', performance.now());
+
         return (
             <form className='Form' onSubmit={this.onSubmitHandler} noValidate>
                 <header className="Form-header">{this.props.header}</header>
@@ -115,7 +115,10 @@ class Form extends Component {
                     label='Дата рождения'
                     value={fields.date}
                     onChange={this.onChangeHandler}
-                    onBlur={this.onBlurHandler}
+                    onBlur={(event) => {
+                        this.onChangeHandler(event)
+                        this.onBlurHandler(event)
+                    }}
                     error={errors.date}
                 />
                 <Input

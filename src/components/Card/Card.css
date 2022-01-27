@@ -1,7 +1,7 @@
 .Card {
   max-width: 450px;
   border-radius: 10px;
-  background-color: #94a3b8;
+  background-color: #334155;
   padding: 10px;
   box-shadow: 3px 3px 5px #000;
   flex-grow: 1;
@@ -11,5 +11,5 @@
   text-align: center;
   font-weight: bold;
   font-size: 1.5rem;
-  color: #0f172a;
+  color: #fff;
 }

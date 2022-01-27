@@ -35,7 +35,6 @@ class Textarea extends PureComponent {
     }
 
     render() {
-        console.log('Render textarea ', this.props.name, this.props.limit)
         return (
             <div className='Textarea'>
                 <label className='Textarea-label' htmlFor={this.getId()}>{this.props.label}</label>

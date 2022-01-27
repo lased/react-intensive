@@ -1,6 +1,6 @@
 .Field,
 .Field-label {
-  color: #0f172a;
+  color: #fff;
 }
 
 .Field {
@@ -10,4 +10,10 @@
 .Field-label {
   font-weight: bold;
   margin-right: 5px;
+}
+
+.Field a {
+  color: #9575cd;
+  font-weight: bold;
+  text-decoration: none;
 }
