@@ -1,28 +1,19 @@
 * {
   box-sizing: border-box;
+  font-family: Tahoma, Geneva, sans-serif;
+  font-size: 14px;
 }
+
 body {
   margin: 0;
   padding: 0;
 }
-.wrapper {
+
+.App {
   width: 100%;
   min-height: 100vh;
-  background-color: #263238;
+  background-color: #111827;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-.App {
-  max-width: 450px;
-  border-radius: 10px;
-  background-color: #37474f;
-  padding: 10px;
-  box-shadow: 3px 3px 5px #000;
-}
-.App-header {
-  text-align: center;
-  font-weight: bold;
-  font-size: 1.5rem;
-  color: #fff;
 }

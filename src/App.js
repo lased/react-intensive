@@ -1,23 +1,27 @@
 import { Component } from 'react'
 
-import { Form } from './components'
+import { Form, Card } from './components'
 
 import './App.css'
 
 class App extends Component {
   constructor(props) {
     super(props)
-    this.state = {}
-    this.header = 'Создание анкеты'
+    this.state = { data: null }
+  }
+
+  onSubmitHandler = (data) => {
+    this.setState({ data })
   }
 
   render() {
     return (
-      <div className='wrapper'>
-        <div className="App">
-          <header className="App-header">{this.header}</header>
-          <Form />
-        </div>
+      <div className="App">
+        {
+          this.state.data
+            ? <Card header='Анкета' data={this.state.data} />
+            : <Form header='Создание анкеты' onSubmit={this.onSubmitHandler} />
+        }
       </div>
     )
   }

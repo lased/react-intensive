@@ -1,0 +1,28 @@
+.Button {
+  padding: 10px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+}
+
+.Button:hover {
+  cursor: pointer;
+}
+
+.Button-cancel {
+  color: #fff;
+  background-color: #d32f2f;
+}
+
+.Button-cancel:hover {
+  opacity: 0.85;
+}
+
+.Button-submit {
+  color: #fff;
+  background-color: #15803d;
+}
+
+.Button-submit:hover {
+  opacity: 0.85;
+}
