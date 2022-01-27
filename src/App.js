@@ -1,5 +1,7 @@
 import { Component } from 'react'
 
+import { Form } from './components'
+
 import './App.css'
 
 class App extends Component {
@@ -14,6 +16,7 @@ class App extends Component {
       <div className='wrapper'>
         <div className="App">
           <header className="App-header">{this.header}</header>
+          <Form />
         </div>
       </div>
     )
