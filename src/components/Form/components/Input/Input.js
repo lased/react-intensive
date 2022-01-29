@@ -1,45 +1,42 @@
-import { PureComponent } from 'react'
+import { memo } from 'react'
 
 import './Input.css'
 
-class Input extends PureComponent {
-    getType() {
-        return this.props.type || 'text'
+const getClassName = (error) => {
+    const classes = ['Input-field']
+
+    if (error) {
+        classes.push('Input-field-error')
     }
 
-    getPlaceholder() {
-        return this.props.placeholder || this.props.label
-    }
-
-    getId() {
-        return `Input-${this.props.name}-id`
-    }
-
-    getInputClassName() {
-        return `Input-field ${this.props.error ? 'Input-field-error' : ''}`
-    }
-
-    render() {
-        return (
-            <div className='Input'>
-                <label className='Input-label' htmlFor={this.getId()}>{this.props.label}</label>
-                <input
-                    id={this.getId()}
-                    className={this.getInputClassName()}
-                    type={this.getType()}
-                    value={this.props.value}
-                    name={this.props.name}
-                    placeholder={this.getPlaceholder()}
-                    onChange={this.props.onChange}
-                    onBlur={this.props.onBlur}
-                />
-                {
-                    this.props.error && <div className='Input-error'>{this.props.error}</div>
-                }
-
-            </div>
-        )
-    }
+    return classes.join(' ')
 }
 
-export default Input
+
+const Input = (props) => {
+    const placeholder = props.placeholder || props.label
+    const type = props.type || 'text'
+    const id = `Input-${props.name}-id`
+
+    return (
+        <div className='Input'>
+            <label className='Input-label' htmlFor={id}>{props.label}</label>
+            <input
+                id={id}
+                className={getClassName(props.error)}
+                type={type}
+                value={props.value}
+                name={props.name}
+                placeholder={placeholder}
+                onChange={props.onChange}
+                onBlur={props.onBlur}
+            />
+            {
+                props.error && <div className='Input-error'>{props.error}</div>
+            }
+
+        </div>
+    )
+}
+
+export default memo(Input)

@@ -1,23 +1,27 @@
-import { PureComponent } from 'react'
+import { memo } from 'react'
 
 import './Button.css'
 
-class Button extends PureComponent {
-    getClassName() {
-        return this.props.design && `Button-${this.props.design}`
+const getClassName = (design) => {
+    const classes = ['Button']
+
+    if (design) {
+        classes.push(`Button-${design}`)
     }
 
-    render() {
-        return (
-            <button
-                className={`Button ${this.getClassName()}`}
-                type={this.props.type}
-                onClick={this.props.onClick}
-            >
-                {this.props.children}
-            </button>
-        )
-    }
+    return classes.join(' ')
 }
 
-export default Button
+const Button = (props) => {
+    return (
+        <button
+            className={getClassName(props.design)}
+            type={props.type}
+            onClick={props.onClick}
+        >
+            {props.children}
+        </button>
+    )
+}
+
+export default memo(Button)
