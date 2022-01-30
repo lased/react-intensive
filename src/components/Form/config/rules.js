@@ -1,6 +1,6 @@
 const RULES = {
-    name: ['required', 'firstCharInUpperСase'],
-    surname: ['required', 'firstCharInUpperСase'],
+    name: ['required', 'firstCharInUpperСase', { pattern: /^[^\d\W]+$/ }],
+    surname: ['required', 'firstCharInUpperСase', { pattern: /^[^\d\W]+$/ }],
     date: ['required', { pattern: /^\d{4}-\d{2}-\d{2}$/ }],
     phone: ['required', { pattern: /^\d-\d{4}-\d{2}-\d{2}$/ }],
     site: [

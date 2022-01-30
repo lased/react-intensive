@@ -1,6 +1,6 @@
 import { memo } from 'react'
 
-import { WrapperBlock, LabelBlock, ErrorBlock } from '../shared/blocks'
+import { WrapperBlock, LabelBlock, ErrorBlock } from '../Form/shared/blocks'
 import { TextareaBlock, LimitBlock } from './blocks'
 
 const isDanger = (limit) => limit < 0

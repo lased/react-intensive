@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { Form, Card } from './components'
+import { Form, Card, Header } from './components'
 import { AppBlock } from './blocks'
 
 const App = () => {
@@ -8,13 +8,16 @@ const App = () => {
   const onSubmitHandler = (recivedData) => setData(recivedData)
 
   return (
-    <AppBlock>
-      {
-        data
-          ? <Card header='Анкета' data={data} />
-          : <Form header='Создание анкеты' onSubmit={onSubmitHandler} />
-      }
-    </AppBlock>
+    <>
+      <Header />
+      <AppBlock>
+        {
+          data
+            ? <Card header='Анкета' data={data} />
+            : <Form header='Создание анкеты' onSubmit={onSubmitHandler} />
+        }
+      </AppBlock>
+    </>
   )
 }
 

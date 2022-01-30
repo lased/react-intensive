@@ -1,10 +1,10 @@
 import { useState } from 'react'
 
 import { DEFAULT_VALUES, RULES } from './config'
-import { Input, Textarea, Button } from './components'
+import { Input, Textarea, Button } from '../'
 import { ButtonsBlock, FormBlock, HeaderBlock } from './blocks'
 
-import Validator from './Validator'
+import { Validator } from '../../shared'
 
 const Form = (props) => {
     const [fields, setFields] = useState(DEFAULT_VALUES)
