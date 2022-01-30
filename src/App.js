@@ -1,21 +1,20 @@
 import { useState } from 'react'
 
 import { Form, Card } from './components'
-
-import './App.css'
+import { AppBlock } from './blocks'
 
 const App = () => {
   const [data, setData] = useState(null)
   const onSubmitHandler = (recivedData) => setData(recivedData)
 
   return (
-    <div className="App">
+    <AppBlock>
       {
         data
           ? <Card header='Анкета' data={data} />
           : <Form header='Создание анкеты' onSubmit={onSubmitHandler} />
       }
-    </div>
+    </AppBlock>
   )
 }
 

@@ -1,26 +1,14 @@
 import { memo } from 'react'
 
-import './Textarea.css'
+import { WrapperBlock, LabelBlock, ErrorBlock } from '../shared/blocks'
+import { TextareaBlock, LimitBlock } from './blocks'
 
-const getClassName = (limit, error) => {
-    const classes = ['Textarea-field']
+const isDanger = (limit) => limit < 0
+const setErrorProperty = ({ error, danger }) => {
+    if (danger) { return { danger } }
+    if (error) { return { error } }
 
-    if (limit < 0) {
-        classes.push('Textarea-field-danger')
-    } else if (error) {
-        classes.push('Textarea-field-error')
-    }
-
-    return classes.join(' ')
-}
-const getLimitClassName = (limit) => {
-    const classes = ['Textarea-limit']
-
-    if (limit < 0) {
-        classes.push('Textarea-limit-danger')
-    }
-
-    return classes.join(' ')
+    return {}
 }
 
 const Textarea = (props) => {
@@ -31,27 +19,21 @@ const Textarea = (props) => {
     )
 
     return (
-        <div className='Textarea'>
-            <label className='Textarea-label' htmlFor={id}>{props.label}</label>
-            <textarea
+        <WrapperBlock>
+            <LabelBlock htmlFor={id}>{props.label}</LabelBlock>
+            <TextareaBlock
+                {...setErrorProperty({ error: props.error, danger: isDanger(limit) })}
                 id={id}
-                className={getClassName(limit, props.error)}
                 name={props.name}
                 value={props.value}
                 onChange={props.onChange}
                 onBlur={props.onBlur}
-            ></textarea>
-            {
-                props.limit && <div className={getLimitClassName(limit)}>
-                    {limitText}
-                </div>
-            }
-            {
-                props.error && limit >= 0 && <div className='Textarea-error'>
-                    {props.error}
-                </div>
-            }
-        </div>
+            />
+            {props.limit && <LimitBlock {...setErrorProperty({ danger: isDanger(limit) })}>
+                {limitText}
+            </LimitBlock>}
+            {props.error && limit >= 0 && <ErrorBlock>{props.error}</ErrorBlock>}
+        </WrapperBlock>
     )
 }
 

@@ -1,17 +1,9 @@
 import { memo } from 'react'
 
-import './Input.css'
+import { LabelBlock, WrapperBlock, ErrorBlock } from '../shared/blocks'
+import { InputBlock } from './blocks'
 
-const getClassName = (error) => {
-    const classes = ['Input-field']
-
-    if (error) {
-        classes.push('Input-field-error')
-    }
-
-    return classes.join(' ')
-}
-
+const setErrorProperty = (error) => error ? { error } : {}
 
 const Input = (props) => {
     const placeholder = props.placeholder || props.label
@@ -19,11 +11,11 @@ const Input = (props) => {
     const id = `Input-${props.name}-id`
 
     return (
-        <div className='Input'>
-            <label className='Input-label' htmlFor={id}>{props.label}</label>
-            <input
+        <WrapperBlock>
+            <LabelBlock htmlFor={id}>{props.label}</LabelBlock>
+            <InputBlock
+                {...setErrorProperty(props.error)}
                 id={id}
-                className={getClassName(props.error)}
                 type={type}
                 value={props.value}
                 name={props.name}
@@ -32,10 +24,9 @@ const Input = (props) => {
                 onBlur={props.onBlur}
             />
             {
-                props.error && <div className='Input-error'>{props.error}</div>
+                props.error && <ErrorBlock>{props.error}</ErrorBlock>
             }
-
-        </div>
+        </WrapperBlock>
     )
 }
 

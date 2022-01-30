@@ -1,34 +1,10 @@
 import { useState } from 'react'
 
+import { DEFAULT_VALUES, RULES } from './config'
 import { Input, Textarea, Button } from './components'
+import { ButtonsBlock, FormBlock, HeaderBlock } from './blocks'
+
 import Validator from './Validator'
-
-import './Form.css'
-
-const DEFAULT_VALUES = {
-    name: '',
-    surname: '',
-    date: '',
-    phone: '',
-    site: '',
-    aboutMe: '',
-    stack: '',
-    description: ''
-}
-const RULES = {
-    name: ['required', 'firstCharInUpperСase'],
-    surname: ['required', 'firstCharInUpperСase'],
-    date: ['required', { pattern: /^\d{4}-\d{2}-\d{2}$/ }],
-    phone: ['required', { pattern: /^\d-\d{4}-\d{2}-\d{2}$/ }],
-    site: [
-        'required',
-        { startWith: 'https://' },
-        { pattern: /^https:\/\/(\w+\.)+\w+$/ }
-    ],
-    aboutMe: ['required', { maxLength: 600 }],
-    stack: ['required', { maxLength: 600 }],
-    description: ['required', { maxLength: 600 }]
-}
 
 const Form = (props) => {
     const [fields, setFields] = useState(DEFAULT_VALUES)
@@ -38,6 +14,11 @@ const Form = (props) => {
         setFields(DEFAULT_VALUES)
         setErrors({})
     }
+    const onBlurHandler = (event) => {
+        const { name: field, value } = event.target
+
+        setFields({ ...fields, [field]: value.trim() })
+    }
     const onChangeHandler = (event) => {
         const { name: field, value } = event.target
         const validator = new Validator()
@@ -45,11 +26,6 @@ const Form = (props) => {
         validator.validate(value.trim(), RULES[field])
         setFields({ ...fields, [field]: value })
         setErrors({ ...errors, [field]: validator.getErrorMessage() })
-    }
-    const onBlurHandler = (event) => {
-        const { name: field, value } = event.target
-
-        setFields({ ...fields, [field]: value.trim() })
     }
     const onSubmitHandler = (event) => {
         event.preventDefault()
@@ -74,8 +50,8 @@ const Form = (props) => {
     }
 
     return (
-        <form className='Form' onSubmit={onSubmitHandler} noValidate>
-            <header className="Form-header">{props.header}</header>
+        <FormBlock onSubmit={onSubmitHandler} noValidate>
+            <HeaderBlock>{props.header}</HeaderBlock>
             <Input
                 name='name'
                 label='Имя'
@@ -149,11 +125,11 @@ const Form = (props) => {
                 onBlur={onBlurHandler}
                 error={errors.description}
             />
-            <div className='Buttons'>
-                <Button design='cancel' type='button' onClick={clearForm}>Отмена</Button>
-                <Button design='submit'>Сохранить</Button>
-            </div>
-        </form>
+            <ButtonsBlock>
+                <Button error type='button' onClick={clearForm}>Отмена</Button>
+                <Button primary>Сохранить</Button>
+            </ButtonsBlock>
+        </FormBlock>
     )
 }
 
