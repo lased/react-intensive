@@ -1,6 +1,12 @@
 const RULES = {
-    name: ['required', 'firstCharInUpperСase', { pattern: /^[^\d\W]+$/ }],
-    surname: ['required', 'firstCharInUpperСase', { pattern: /^[^\d\W]+$/ }],
+    name: [
+        'required', 'firstCharInUpperСase',
+        { pattern: /^[^\d`~!@"№#$;%^:?&*()_\-+={}[\]\\|/'<>,.]+$/ }
+    ],
+    surname: [
+        'required', 'firstCharInUpperСase',
+        { pattern: /^[^\d`~!@"№#$;%^:?&*()_\-+={}[\]\\|/'<>,.]+$/ }
+    ],
     date: ['required', { pattern: /^\d{4}-\d{2}-\d{2}$/ }],
     phone: ['required', { pattern: /^\d-\d{4}-\d{2}-\d{2}$/ }],
     site: [
