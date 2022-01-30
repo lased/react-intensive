@@ -1,15 +1,14 @@
 import { memo } from 'react'
-
-import './Field.css'
+import { FieldBlock, LabelBlock } from './blocks'
 
 const Field = (props) => {
     const getContents = () => props.children || props.value
 
     return (
-        <div className='Field'>
-            <span className='Field-label'>{props.label}</span>
+        <FieldBlock>
+            <LabelBlock>{props.label}</LabelBlock>
             {getContents()}
-        </div>
+        </FieldBlock>
     )
 }
 

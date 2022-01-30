@@ -1,15 +1,14 @@
 import { memo } from 'react'
 
 import { Field } from './components'
-
-import './Card.css'
+import { CardBlock, HeaderBlock } from './blocks'
 
 const getNormalDate = (date) => date.split('-').reverse().join('.')
 
 const Card = ({ header, data }) => {
     return (
-        <div className='Card'>
-            <header className='Card-header'>{header}</header>
+        <CardBlock>
+            <HeaderBlock>{header}</HeaderBlock>
             <Field label='Фамилия:' value={data.surname} />
             <Field label='Имя:' value={data.name} />
             <Field label='Дата рождения:' value={getNormalDate(data.date)} />
@@ -20,7 +19,7 @@ const Card = ({ header, data }) => {
             <Field label='О себе:' value={data.aboutMe} />
             <Field label='Стек технологий:' value={data.stack} />
             <Field label='Описание последнего проекта:' value={data.description} />
-        </div>
+        </CardBlock>
     )
 }
 
