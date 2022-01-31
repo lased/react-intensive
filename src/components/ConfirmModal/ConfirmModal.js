@@ -1,4 +1,4 @@
-import { memo, useEffect } from 'react';
+import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 
 import { WrapperBlock, ModalBlock, HeaderBlock, ButtonsBlock } from './blocks'
@@ -25,4 +25,4 @@ const ConfirmModal = (props) => {
     return createPortal(markup, modalNode)
 }
 
-export default memo(ConfirmModal)
+export default ConfirmModal

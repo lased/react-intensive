@@ -1,4 +1,4 @@
-import { memo, useContext, useState } from 'react';
+import { useContext, useState } from 'react';
 
 import { ContainerBlock, HeaderBlock, ToggleButtonBlock } from './blocks';
 import { ThemeContext } from '../../context'
@@ -10,7 +10,7 @@ const getStyleButton = (theme) => theme === 'dark' ? {} : { primary: true }
 const Header = (props) => {
   const { theme, toggleTheme } = useContext(ThemeContext)
   const [showModal, setShowModal] = useState(false)
-  
+
   const showConfirmModal = () => setShowModal(true)
   const onResetFormHandler = (confirmed) => {
     if (confirmed) { props.onResetForm() }
@@ -34,4 +34,4 @@ const Header = (props) => {
   )
 }
 
-export default memo(Header)
+export default Header

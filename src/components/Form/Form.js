@@ -1,4 +1,4 @@
-import { forwardRef, useState, useImperativeHandle } from 'react'
+import { forwardRef, useState, useImperativeHandle, useCallback } from 'react'
 
 import { DEFAULT_VALUES, RULES } from './config'
 import { Input, Textarea, Button } from '../'
@@ -14,19 +14,19 @@ const Form = (props, ref) => {
         setFields(DEFAULT_VALUES)
         setErrors({})
     }
-    const onBlurHandler = (event) => {
+    const onBlurHandler = useCallback((event) => {
         const { name: field, value } = event.target
 
-        setFields({ ...fields, [field]: value.trim() })
-    }
-    const onChangeHandler = (event) => {
+        setFields((prevFields) => ({ ...prevFields, [field]: value.trim() }))
+    }, [])
+    const onChangeHandler = useCallback((event) => {
         const { name: field, value } = event.target
         const validator = new Validator()
 
         validator.validate(value.trim(), RULES[field])
-        setFields({ ...fields, [field]: value })
-        setErrors({ ...errors, [field]: validator.getErrorMessage() })
-    }
+        setFields((prevFields) => ({ ...prevFields, [field]: value }))
+        setErrors((prevErrors) => ({ ...prevErrors, [field]: validator.getErrorMessage() }))
+    }, [])
     const onSubmitHandler = (event) => {
         event.preventDefault()
 
@@ -80,10 +80,7 @@ const Form = (props, ref) => {
                 label='Дата рождения'
                 value={fields.date}
                 onChange={onChangeHandler}
-                onBlur={(event) => {
-                    onChangeHandler(event)
-                    onBlurHandler(event)
-                }}
+                onBlur={onChangeHandler}
                 error={errors.date}
             />
             <Input
