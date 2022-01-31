@@ -37,7 +37,9 @@ const Form = (props, ref) => {
             const valid = validator.validate(fields[field], RULES[field])
 
             if (!valid) {
-                setErrors((currentErrors) => ({ ...currentErrors, [field]: validator.getErrorMessage() }))
+                setErrors((currentErrors) => ({
+                    ...currentErrors, [field]: validator.getErrorMessage()
+                }))
             }
 
             formValid &&= valid

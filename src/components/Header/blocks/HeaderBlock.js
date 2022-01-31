@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const HeaderBlock = styled.div({
+const HeaderBlock = styled.header({
     backgroundColor: 'var(--background-color-20)',
     boxShadow: '0 2px 5px #000',
     position: 'fixed',

@@ -10,6 +10,7 @@ const getStyleButton = (theme) => theme === 'dark' ? {} : { primary: true }
 const Header = (props) => {
   const { theme, toggleTheme } = useContext(ThemeContext)
   const [showModal, setShowModal] = useState(false)
+  
   const showConfirmModal = () => setShowModal(true)
   const onResetFormHandler = (confirmed) => {
     if (confirmed) { props.onResetForm() }

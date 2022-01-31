@@ -4,9 +4,9 @@ import { Form, Card, Header } from './components'
 import { AppBlock } from './blocks'
 import { ThemeContext } from './context'
 
-const App = (props) => {
+const App = () => {
   const formRef = useRef()
-  const prevThemeRef = useRef('dark')
+  const prevThemeRef = useRef()
 
   const [data, setData] = useState(null)
   const [theme, setTheme] = useState('dark')
