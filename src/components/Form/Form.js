@@ -127,7 +127,7 @@ const Form = (props) => {
             />
             <ButtonsBlock>
                 <Button error type='button' onClick={clearForm}>Отмена</Button>
-                <Button primary>Сохранить</Button>
+                <Button secondary>Сохранить</Button>
             </ButtonsBlock>
         </FormBlock>
     )

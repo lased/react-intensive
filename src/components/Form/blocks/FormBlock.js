@@ -4,7 +4,7 @@ const FormBlock = styled.form({
     overflow: 'hidden',
     maxWidth: 450,
     borderRadius: 10,
-    backgroundColor: '#334155',
+    backgroundColor: 'var(--background-color-30)',
     padding: 10,
     boxShadow: '3px 3px 5px #000',
     flexGrow: 1

@@ -4,7 +4,7 @@ const HeaderBlock = styled.header({
     textAlign: 'center',
     fontWeight: 'bold',
     fontSize: '1.5rem',
-    color: '#fff'
+    color: 'var(--text-color-10)'
 })
 
 export default HeaderBlock
