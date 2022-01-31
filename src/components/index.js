@@ -1,3 +1,4 @@
+export * from './ConfirmModal'
 export * from './Textarea'
 export * from './Header'
 export * from './Button'

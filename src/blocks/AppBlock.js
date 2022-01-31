@@ -6,7 +6,9 @@ const AppBlock = styled.div({
     backgroundColor: 'var(--background-color-10)',
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    paddingTop: 70,
+    paddingBottom: 20
 })
 
 export default AppBlock

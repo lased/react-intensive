@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { forwardRef, useState, useImperativeHandle } from 'react'
 
 import { DEFAULT_VALUES, RULES } from './config'
 import { Input, Textarea, Button } from '../'
@@ -6,7 +6,7 @@ import { ButtonsBlock, FormBlock, HeaderBlock } from './blocks'
 
 import { Validator } from '../../shared'
 
-const Form = (props) => {
+const Form = (props, ref) => {
     const [fields, setFields] = useState(DEFAULT_VALUES)
     const [errors, setErrors] = useState({})
 
@@ -48,6 +48,10 @@ const Form = (props) => {
             props.onSubmit(fields)
         }
     }
+
+    useImperativeHandle(ref, () => ({
+        reset: clearForm
+    }));
 
     return (
         <FormBlock onSubmit={onSubmitHandler} noValidate>
@@ -133,4 +137,4 @@ const Form = (props) => {
     )
 }
 
-export default Form
+export default forwardRef(Form)
