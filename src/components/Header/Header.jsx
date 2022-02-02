@@ -2,7 +2,7 @@ import { useContext, useState } from 'react';
 
 import { ContainerBlock, HeaderBlock, ToggleButtonBlock } from './blocks';
 import { ThemeContext } from '../../context'
-import { Button, ConfirmModal } from '../'
+import { Button, ConfirmModal } from '..'
 
 const getThemeText = (theme) => theme === 'dark' ? 'Светлая' : 'Темная'
 const getStyleButton = (theme) => theme === 'dark' ? {} : { primary: true }
