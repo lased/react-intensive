@@ -1,34 +1,22 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react'
 
-import { ContainerBlock, HeaderBlock, ToggleButtonBlock } from './blocks';
+import { ContainerBlock, HeaderBlock, ToggleButtonBlock } from './blocks'
 import { ThemeContext } from '../../context'
-import { Button, ConfirmModal } from '..'
+import { Nav } from './components'
 
-const getThemeText = (theme) => theme === 'dark' ? 'Светлая' : 'Темная'
-const getStyleButton = (theme) => theme === 'dark' ? {} : { primary: true }
+const getThemeText = (theme) => (theme === 'dark' ? 'Светлая' : 'Темная')
+const getStyleButton = (theme) => (theme === 'dark' ? {} : { primary: true })
 
-const Header = (props) => {
+const Header = () => {
   const { theme, toggleTheme } = useContext(ThemeContext)
-  const [showModal, setShowModal] = useState(false)
-
-  const showConfirmModal = () => setShowModal(true)
-  const onResetFormHandler = (confirmed) => {
-    if (confirmed) { props.onResetForm() }
-
-    setShowModal(false)
-  }
 
   return (
     <HeaderBlock>
       <ContainerBlock>
-        {props.showReset && <Button error onClick={showConfirmModal}>Сбросить форму</Button>}
-        <ToggleButtonBlock
-          {...getStyleButton(theme)}
-          onClick={toggleTheme}
-        >
+        <Nav />
+        <ToggleButtonBlock {...getStyleButton(theme)} onClick={toggleTheme}>
           {getThemeText(theme)}
         </ToggleButtonBlock>
-        {showModal && <ConfirmModal onConfirm={onResetFormHandler} />}
       </ContainerBlock>
     </HeaderBlock>
   )

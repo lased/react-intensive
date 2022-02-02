@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { Button } from '../../Button'
+import { Button } from '../../../shared/components/Button'
 
 const ToggleButtonBlock = styled(Button)({
     marginLeft: 'auto'

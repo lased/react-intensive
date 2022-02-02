@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 const ErrorBlock = styled.div({
     padding: '5px 10px',

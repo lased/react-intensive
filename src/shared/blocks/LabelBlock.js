@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 const LabelBlock = styled.label({
     color: 'var(--text-color-10)',

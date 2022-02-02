@@ -1,19 +1,16 @@
 import { useEffect, useRef, useState } from 'react'
+import { Route, Switch } from 'react-router-dom'
 
-import { Form, Card, Header } from './components'
+import { Header } from './components'
 import { AppBlock } from './blocks'
 import { ThemeContext } from './context'
+import { About, Home } from './pages'
+import { ContainerBlock } from './shared'
 
 const App = () => {
-  const formRef = useRef()
   const prevThemeRef = useRef()
-
-  const [data, setData] = useState(null)
   const [theme, setTheme] = useState('dark')
-
-  const onSubmitHandler = (recivedData) => setData(recivedData)
   const toggleTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark')
-  const onResetFormHandler = () => formRef.current.reset()
 
   useEffect(() => {
     document.body.classList.remove(prevThemeRef.current)
@@ -23,20 +20,14 @@ const App = () => {
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      <Header
-        {...(!data ? { showReset: true } : {})}
-        onResetForm={onResetFormHandler}
-      />
+      <Header />
       <AppBlock>
-        {
-          data
-            ? <Card header='Анкета' data={data} />
-            : <Form
-              ref={formRef}
-              header='Создание анкеты'
-              onSubmit={onSubmitHandler}
-            />
-        }
+        <ContainerBlock>
+          <Switch>
+            <Route path='/' component={Home} exact />
+            <Route path='/about' component={About} />
+          </Switch>
+        </ContainerBlock>
       </AppBlock>
     </ThemeContext.Provider>
   )
