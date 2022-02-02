@@ -1,64 +1,40 @@
-import { PureComponent } from 'react'
+import { memo } from 'react'
 
-import './Textarea.css'
+import { WrapperBlock, LabelBlock, ErrorBlock } from '../shared/blocks'
+import { TextareaBlock, LimitBlock } from './blocks'
 
-class Textarea extends PureComponent {
-    getId() {
-        return `Textarea-${this.props.name}-id`
-    }
+const isDanger = (limit) => limit < 0
+const setErrorProperty = ({ error, danger }) => {
+    if (danger) { return { danger } }
+    if (error) { return { error } }
 
-    getLimit() {
-        return this.props.limit - this.props.value.length
-    }
-
-    getLimitText() {
-        return this.getLimit() < 0
-            ? 'Превышен лимит символов в поле'
-            : `Доступно символов для ввода: ${this.getLimit()}`
-    }
-
-    getDangerClass() {
-        return this.getLimit() < 0 ? 'Textarea-limit-danger' : ''
-    }
-
-    getTextareaClassName() {
-        const limit = this.getLimit()
-        let className = 'Textarea-field'
-
-        if (limit < 0) {
-            className += ` Textarea-field-danger`
-        } else if (this.props.error) {
-            className += ' Textarea-field-error'
-        }
-
-        return className
-    }
-
-    render() {
-        return (
-            <div className='Textarea'>
-                <label className='Textarea-label' htmlFor={this.getId()}>{this.props.label}</label>
-                <textarea
-                    id={this.getId()}
-                    className={this.getTextareaClassName()}
-                    name={this.props.name}
-                    value={this.props.value}
-                    onChange={this.props.onChange}
-                    onBlur={this.props.onBlur}
-                ></textarea>
-                {
-                    this.props.limit && <div className={`Textarea-limit ${this.getDangerClass()}`}>
-                        {this.getLimitText()}
-                    </div>
-                }
-                {
-                    this.props.error && this.getLimit() >= 0 && <div className='Textarea-error'>
-                        {this.props.error}
-                    </div>
-                }
-            </div>
-        )
-    }
+    return {}
 }
 
-export default Textarea
+const Textarea = (props) => {
+    const limit = props.limit - props.value.length
+    const id = `Textarea-${props.name}-id`
+    const limitText = (
+        limit < 0 ? 'Превышен лимит символов в поле' : `Доступно символов для ввода: ${limit}`
+    )
+
+    return (
+        <WrapperBlock>
+            <LabelBlock htmlFor={id}>{props.label}</LabelBlock>
+            <TextareaBlock
+                {...setErrorProperty({ error: props.error, danger: isDanger(limit) })}
+                id={id}
+                name={props.name}
+                value={props.value}
+                onChange={props.onChange}
+                onBlur={props.onBlur}
+            />
+            {props.limit && <LimitBlock {...setErrorProperty({ danger: isDanger(limit) })}>
+                {limitText}
+            </LimitBlock>}
+            {props.error && limit >= 0 && <ErrorBlock>{props.error}</ErrorBlock>}
+        </WrapperBlock>
+    )
+}
+
+export default memo(Textarea)

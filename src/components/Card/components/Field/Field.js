@@ -1,24 +1,15 @@
-import { PureComponent } from 'react'
+import { memo } from 'react'
+import { FieldBlock, LabelBlock } from './blocks'
 
-import './Field.css'
+const Field = (props) => {
+    const getContents = () => props.children || props.value
 
-class Field extends PureComponent {
-    getContents() {
-        if (this.props.children) {
-            return this.props.children
-        }
-
-        return this.props.value
-    }
-
-    render() {
-        return (
-            <div className='Field'>
-                <span className='Field-label'>{this.props.label}</span>
-                {this.getContents()}
-            </div>
-        )
-    }
+    return (
+        <FieldBlock>
+            <LabelBlock>{props.label}</LabelBlock>
+            {getContents()}
+        </FieldBlock>
+    )
 }
 
-export default Field
+export default memo(Field)

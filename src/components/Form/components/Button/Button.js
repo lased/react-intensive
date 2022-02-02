@@ -1,23 +1,17 @@
-import { PureComponent } from 'react'
+import { memo } from 'react'
 
-import './Button.css'
+import { ButtonBlock } from './blocks'
 
-class Button extends PureComponent {
-    getClassName() {
-        return this.props.design && `Button-${this.props.design}`
-    }
-
-    render() {
-        return (
-            <button
-                className={`Button ${this.getClassName()}`}
-                type={this.props.type}
-                onClick={this.props.onClick}
-            >
-                {this.props.children}
-            </button>
-        )
-    }
+const Button = (props) => {
+    return (
+        <ButtonBlock
+            {...props}
+            type={props.type}
+            onClick={props.onClick}
+        >
+            {props.children}
+        </ButtonBlock>
+    )
 }
 
-export default Button
+export default memo(Button)

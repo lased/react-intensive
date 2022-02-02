@@ -1,45 +1,33 @@
-import { PureComponent } from 'react'
+import { memo } from 'react'
 
-import './Input.css'
+import { LabelBlock, WrapperBlock, ErrorBlock } from '../shared/blocks'
+import { InputBlock } from './blocks'
 
-class Input extends PureComponent {
-    getType() {
-        return this.props.type || 'text'
-    }
+const setErrorProperty = (error) => error ? { error } : {}
 
-    getPlaceholder() {
-        return this.props.placeholder || this.props.label
-    }
+const Input = (props) => {
+    const placeholder = props.placeholder || props.label
+    const type = props.type || 'text'
+    const id = `Input-${props.name}-id`
 
-    getId() {
-        return `Input-${this.props.name}-id`
-    }
-
-    getInputClassName() {
-        return `Input-field ${this.props.error ? 'Input-field-error' : ''}`
-    }
-
-    render() {
-        return (
-            <div className='Input'>
-                <label className='Input-label' htmlFor={this.getId()}>{this.props.label}</label>
-                <input
-                    id={this.getId()}
-                    className={this.getInputClassName()}
-                    type={this.getType()}
-                    value={this.props.value}
-                    name={this.props.name}
-                    placeholder={this.getPlaceholder()}
-                    onChange={this.props.onChange}
-                    onBlur={this.props.onBlur}
-                />
-                {
-                    this.props.error && <div className='Input-error'>{this.props.error}</div>
-                }
-
-            </div>
-        )
-    }
+    return (
+        <WrapperBlock>
+            <LabelBlock htmlFor={id}>{props.label}</LabelBlock>
+            <InputBlock
+                {...setErrorProperty(props.error)}
+                id={id}
+                type={type}
+                value={props.value}
+                name={props.name}
+                placeholder={placeholder}
+                onChange={props.onChange}
+                onBlur={props.onBlur}
+            />
+            {
+                props.error && <ErrorBlock>{props.error}</ErrorBlock>
+            }
+        </WrapperBlock>
+    )
 }
 
-export default Input
+export default memo(Input)

@@ -1,30 +1,21 @@
-import { Component } from 'react'
+import { useState } from 'react'
 
 import { Form, Card } from './components'
+import { AppBlock } from './blocks'
 
-import './App.css'
+const App = () => {
+  const [data, setData] = useState(null)
+  const onSubmitHandler = (recivedData) => setData(recivedData)
 
-class App extends Component {
-  constructor(props) {
-    super(props)
-    this.state = { data: null }
-  }
-
-  onSubmitHandler = (data) => {
-    this.setState({ data })
-  }
-
-  render() {
-    return (
-      <div className="App">
-        {
-          this.state.data
-            ? <Card header='Анкета' data={this.state.data} />
-            : <Form header='Создание анкеты' onSubmit={this.onSubmitHandler} />
-        }
-      </div>
-    )
-  }
+  return (
+    <AppBlock>
+      {
+        data
+          ? <Card header='Анкета' data={data} />
+          : <Form header='Создание анкеты' onSubmit={onSubmitHandler} />
+      }
+    </AppBlock>
+  )
 }
 
 export default App
