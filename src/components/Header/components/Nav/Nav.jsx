@@ -5,8 +5,12 @@ import { NavBlock, LinkBlock } from './blocks'
 const Nav = () => {
   return (
     <NavBlock>
-      <LinkBlock to='/'>Home</LinkBlock>
-      <LinkBlock to='/about'>About</LinkBlock>
+      <LinkBlock to='/' exact activeClassName='active'>
+        Главная
+      </LinkBlock>
+      <LinkBlock to='/about' activeClassName='active'>
+        О магазине
+      </LinkBlock>
     </NavBlock>
   )
 }

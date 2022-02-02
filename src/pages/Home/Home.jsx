@@ -1,5 +1,7 @@
+import { ProductList } from './components'
+
 const Home = () => {
-  return ('Home')
+  return <ProductList />
 }
 
 export default Home
