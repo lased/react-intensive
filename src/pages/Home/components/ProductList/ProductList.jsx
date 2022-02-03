@@ -18,16 +18,18 @@ const ProductList = () => {
 
   return (
     <ProductListBlock>
-      {products
-        ? products.map((product) => (
-            <ProductCard
-              key={product.id}
-              product={product}
-              inBasket={basket.includes(product.id)}
-              onClick={onClickHandler}
-            />
-          ))
-        : 'Loading...'}
+      {products ? (
+        products.map((product) => (
+          <ProductCard
+            key={product.id}
+            product={product}
+            inBasket={basket.includes(product.id)}
+            onClick={onClickHandler}
+          />
+        ))
+      ) : (
+        <p>Загрузка...</p>
+      )}
     </ProductListBlock>
   )
 }
