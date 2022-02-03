@@ -1,25 +1,35 @@
-import { useEffect, useState } from 'react'
+import { memo, useCallback } from 'react'
 
-import { getProducts } from '../../../../services'
+import { Product } from '../../../../services'
+import { useObservable, useBasket } from '../../../../hooks'
 import { ProductCard } from '../ProductCard'
 import { ProductListBlock } from './blocks'
 
 const ProductList = () => {
-  const [products, setProducts] = useState(null)
-
-  useEffect(() => {
-    getProducts().then(({data}) => setProducts(data))
+  const [products] = useObservable(Product.getAll)
+  const { basket, addToBasket, removeFromBasket } = useBasket()
+  const onClickHandler = useCallback((product, inBasket) => {
+    if (inBasket) {
+      removeFromBasket(product.id)
+    } else {
+      addToBasket(product.id)
+    }
   }, [])
 
   return (
     <ProductListBlock>
-      {
-        products 
-          ? products.map((product) => <ProductCard key={product.id} product={product} />) 
-          : 'Loading...'
-      }
+      {products
+        ? products.map((product) => (
+            <ProductCard
+              key={product.id}
+              product={product}
+              inBasket={basket.includes(product.id)}
+              onClick={onClickHandler}
+            />
+          ))
+        : 'Loading...'}
     </ProductListBlock>
   )
 }
 
-export default ProductList
+export default memo(ProductList)
