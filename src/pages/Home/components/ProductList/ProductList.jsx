@@ -10,9 +10,9 @@ const ProductList = () => {
   const { basket, addToBasket, removeFromBasket } = useBasket()
   const onClickHandler = useCallback((product, inBasket) => {
     if (inBasket) {
-      removeFromBasket(product.id)
+      removeFromBasket(product)
     } else {
-      addToBasket(product.id)
+      addToBasket(product)
     }
   }, [])
 
@@ -23,7 +23,7 @@ const ProductList = () => {
           <ProductCard
             key={product.id}
             product={product}
-            inBasket={basket.includes(product.id)}
+            inBasket={basket.some((currentProduct) => currentProduct.id === product.id)}
             onClick={onClickHandler}
           />
         ))

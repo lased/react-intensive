@@ -2,15 +2,19 @@ import { BasketActionType } from '../'
 import { LocalStorage } from '../../services'
 import { BASKET_KEY } from '../../config'
 
-const BasketReducer = (products, action) => {
+const BasketReducer = (products, { type, product }) => {
+    const productInfo = {
+        id: product.id,
+        price: product.price
+    }
     let newProducts = products
 
-    switch (action.type) {
+    switch (type) {
         case BasketActionType.ADD:
-            newProducts = [...products, action.product]
+            newProducts = [...products, productInfo]
             break
         case BasketActionType.REMOVE:
-            newProducts = products.filter((product) => product !== action.product)
+            newProducts = products.filter((currentProduct) => currentProduct.id !== product.id)
             break
     }
 
