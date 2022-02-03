@@ -4,7 +4,7 @@ import { Route, Switch } from 'react-router-dom'
 import { Header } from './components'
 import { AppBlock } from './blocks'
 import { ThemeContext } from './context'
-import { About, Home } from './pages'
+import { About, Home, Product } from './pages'
 import { ContainerBlock } from './shared'
 
 const App = () => {
@@ -26,6 +26,7 @@ const App = () => {
           <Switch>
             <Route path='/' component={Home} exact />
             <Route path='/about' component={About} />
+            <Route path='/product/:id' component={Product} />
           </Switch>
         </ContainerBlock>
       </AppBlock>

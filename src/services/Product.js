@@ -10,6 +10,12 @@ class Product {
             map(({ data }) => data)
         )
     }
+    static getById(id) {
+        return from(axios.get(`${API}/products/${id}`)).pipe(
+            delay(500),
+            map(({ data }) => data)
+        )
+    }
 }
 
 export default Product

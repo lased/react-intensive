@@ -4,43 +4,57 @@
       "id": 1,
       "title": "240 ГБ Внутренний SSD диск Kingston A400 2.5\" SATA3 6.0 Гбит/с (SA400S37/240G)",
       "price": 2600,
-      "image": "/images/products/1/1.png"
+      "inStock": 2,
+      "image": "/images/products/1/1.png",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae."
     },
     {
       "id": 2,
       "title": "1 ТБ Внутренний жесткий диск Toshiba P300 (HDWD110UZSVA)",
       "price": 3000,
-      "image": "/images/products/2/1.png"
+      "inStock": 3,
+      "image": "/images/products/2/1.png",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae."
     },
     {
       "id": 3,
       "title": "Процессор Intel Core i5-10400F BOX (с кулером)",
       "price": 12800,
-      "image": "/images/products/3/1.png"
+      "inStock": 4,
+      "image": "/images/products/3/1.png",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae."
     },
     {
       "id": 4,
       "title": "RGB вентилятор 12R6",
       "price": 400,
-      "image": "/images/products/4/1.png"
+      "inStock": 8,
+      "image": "/images/products/4/1.png",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae."
     },
     {
       "id": 5,
       "title": "Оперативная память Apacer DDR4 2666 МГц 1x8 ГБ (EL.08G2V.GNH)",
       "price": 2600,
-      "image": "/images/products/5/1.png"
+      "inStock": 1,
+      "image": "/images/products/5/1.png",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae."
     },
     {
       "id": 6,
       "title": "240 ГБ Внутренний SSD диск Kingston A400 M.2 SATA3 6.0 Гбит/с (SA400M8/240G)",
       "price": 2500,
-      "image": "/images/products/6/1.png"
+      "inStock": 0,
+      "image": "/images/products/6/1.png",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae."
     },
     {
       "id": 7,
       "title": "Блок питания компьютера Aerocool VX PLUS 750W, 750 Вт, черный",
       "price": 3433,
-      "image": "/images/products/7/1.png"
+      "inStock": 12,
+      "image": "/images/products/7/1.png",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae."
     }
   ]
 }

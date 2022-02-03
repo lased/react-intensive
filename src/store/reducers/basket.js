@@ -3,19 +3,29 @@ import { LocalStorage } from '../../services'
 import { BASKET_KEY } from '../../config'
 
 const BasketReducer = (products, { type, product }) => {
-    const productInfo = {
-        id: product.id,
-        price: product.price
-    }
-    let newProducts = products
+    let newProducts
 
     switch (type) {
         case BasketActionType.ADD:
-            newProducts = [...products, productInfo]
+            newProducts = [...products, product]
             break
         case BasketActionType.REMOVE:
-            newProducts = products.filter((currentProduct) => currentProduct.id !== product.id)
+            newProducts = products.filter((currentProduct) => {
+                if (currentProduct.id === product.id) {
+                    const diff = currentProduct.count - product.count
+
+                    if (diff <= 0) {
+                        return false
+                    }
+
+                    return { ...currentProduct, count: diff }
+                }
+
+                return true
+            })
             break
+        default:
+            newProducts = products
     }
 
     LocalStorage.setItem(BASKET_KEY, newProducts)
