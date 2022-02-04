@@ -30,6 +30,7 @@ const ProductCard = ({ product, onClick, inBasket }) => {
       <Button
         error={inBasket || isNotAvailable}
         secondary={!inBasket && !isNotAvailable}
+        disabled={isNotAvailable}
         onClick={onClickHandler}
       >
         {buttonText(inBasket, isNotAvailable)}

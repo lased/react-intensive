@@ -28,7 +28,7 @@ const Product = () => {
   const { id } = useParams()
   const [product] = useObservable(ProductService.getById, null, id)
   const { basket, addToBasket, removeFromBasket } = useBasket()
-  
+
   const inBasket = basket.some((currentProduct) => currentProduct.id === +id)
   const isNotAvailable = product && !product.inStock
 
@@ -58,6 +58,7 @@ const Product = () => {
           <Button
             error={inBasket || isNotAvailable}
             secondary={!inBasket && !isNotAvailable}
+            disabled={isNotAvailable}
             onClick={onClickHandler}
           >
             {buttonText(inBasket, isNotAvailable)}

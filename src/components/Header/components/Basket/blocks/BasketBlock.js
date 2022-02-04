@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const BasketBlockBlock = styled.div({
+const BasketBlock = styled.div({
     backgroundColor: 'var(--background-color-30)',
     display: 'flex',
     justifyContent: 'center',
@@ -8,7 +8,7 @@ const BasketBlockBlock = styled.div({
     padding: '5px 10px',
     color: 'var(--text-color-10)',
     borderRadius: 5,
-    marginLeft: 'auto'
+    marginLeft: 20
 })
 
-export default BasketBlockBlock
+export default BasketBlock

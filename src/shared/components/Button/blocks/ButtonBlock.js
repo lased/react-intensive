@@ -24,6 +24,9 @@ const ButtonBlock = styled.button((props) => ({
         cursor: 'pointer',
         opacity: .85
     },
+    ':disabled': {
+        opacity: .7
+    }
 }))
 
 export default ButtonBlock
