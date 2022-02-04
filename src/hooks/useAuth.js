@@ -7,7 +7,7 @@ import { USER_KEY } from '../config'
 const AuthSubject = new Subject()
 const userInfo = LocalStorage.getItem(USER_KEY)
 
-const useBasket = () => {
+const useAuth = () => {
     const [isAuth, setIsAuth] = useState(!!userInfo)
 
     const login = (user) => {
@@ -40,4 +40,4 @@ const useBasket = () => {
     }
 }
 
-export default useBasket
+export default useAuth
