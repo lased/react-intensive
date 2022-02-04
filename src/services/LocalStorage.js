@@ -5,6 +5,9 @@ class LocalStorage {
     static setItem(key, value) {
         localStorage.setItem(key, JSON.stringify(value))
     }
+    static removeItem(key) {
+        localStorage.removeItem(key)
+    }
 }
 
 export default LocalStorage
