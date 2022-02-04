@@ -1,7 +1,5 @@
 import { ProductList } from './components'
 
-const Home = () => {
-  return <ProductList />
-}
+const Home = () => <ProductList />
 
 export default Home

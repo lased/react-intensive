@@ -16,17 +16,15 @@ const buttonText = (isAuth, inBasket, isNotAvailable) => {
   return 'Добавить в корзину'
 }
 
-const AddToBasket = ({ inBasket, isNotAvailable, isAuth, onClick }) => {
-  return (
-    <Button
-      error={inBasket || isNotAvailable || !isAuth}
-      secondary={!inBasket && !isNotAvailable && isAuth}
-      disabled={isNotAvailable || !isAuth}
-      onClick={onClick}
-    >
-      {buttonText(isAuth, inBasket, isNotAvailable)}
-    </Button>
-  )
-}
+const AddToBasket = ({ inBasket, isNotAvailable, isAuth, onClick }) => (
+  <Button
+    error={inBasket || isNotAvailable || !isAuth}
+    secondary={!inBasket && !isNotAvailable && isAuth}
+    disabled={isNotAvailable || !isAuth}
+    onClick={onClick}
+  >
+    {buttonText(isAuth, inBasket, isNotAvailable)}
+  </Button>
+)
 
 export default memo(AddToBasket)
