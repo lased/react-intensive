@@ -10,9 +10,9 @@ const getText = (isAuth) => (isAuth ? 'Выйти' : 'Войти')
 const Login = () => {
   const { isAuth, login, logout } = useAuth()
   const [isShow, setIsShow] = useState(false)
-  const onClickHandler = () => (isAuth ? logout() : setIsShow(true))
   const onCloseHandler = () => setIsShow(false)
-  const onSubmitHandler = (user) => login(user)
+  const onSubmitHandler = (user) => (login(user), onCloseHandler())
+  const onClickHandler = () => (isAuth ? logout() : setIsShow(true))
 
   return (
     <>

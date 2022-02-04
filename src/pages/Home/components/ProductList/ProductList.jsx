@@ -1,13 +1,15 @@
 import { memo, useCallback } from 'react'
 
 import { Product } from '../../../../services'
-import { useObservable, useBasket } from '../../../../hooks'
+import { useObservable, useBasket, useAuth } from '../../../../hooks'
 import { ProductCard } from '../ProductCard'
 import { ProductListBlock } from './blocks'
 
 const ProductList = () => {
-  const [products] = useObservable(Product.getAll)
   const { basket, addToBasket, removeFromBasket } = useBasket()
+  const [products] = useObservable(Product.getAll)
+  const { isAuth } = useAuth()
+
   const onClickHandler = useCallback((product, inBasket) => {
     if (inBasket) {
       removeFromBasket(product)
@@ -24,6 +26,7 @@ const ProductList = () => {
             key={product.id}
             product={product}
             inBasket={basket.some((currentProduct) => currentProduct.id === product.id)}
+            isAuth={isAuth}
             onClick={onClickHandler}
           />
         ))

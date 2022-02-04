@@ -10,24 +10,14 @@ import {
   TitleBlock,
 } from './blocks'
 import { Product as ProductService } from '../../services'
-import { useBasket, useObservable } from '../../hooks'
-import { Button, Helper } from '../../shared'
-
-const buttonText = (inBasket, isNotAvailable) => {
-  if (isNotAvailable) {
-    return 'Товар недоступен'
-  }
-  if (inBasket) {
-    return 'Удалить из корзины'
-  }
-
-  return 'Добавить в корзину'
-}
+import { useAuth, useBasket, useObservable } from '../../hooks'
+import { AddToBasket, Helper } from '../../shared'
 
 const Product = () => {
   const { id } = useParams()
   const [product] = useObservable(ProductService.getById, null, id)
   const { basket, addToBasket, removeFromBasket } = useBasket()
+  const { isAuth } = useAuth()
 
   const inBasket = basket.some((currentProduct) => currentProduct.id === +id)
   const isNotAvailable = product && !product.inStock
@@ -55,14 +45,12 @@ const Product = () => {
               Цена: <strong>{Helper.getCurrency(product.price)}</strong>
             </PriceBlock>
           </ProductInfoBlock>
-          <Button
-            error={inBasket || isNotAvailable}
-            secondary={!inBasket && !isNotAvailable}
-            disabled={isNotAvailable}
+          <AddToBasket
+            inBasket={inBasket}
+            isNotAvailable={isNotAvailable}
+            isAuth={isAuth}
             onClick={onClickHandler}
-          >
-            {buttonText(inBasket, isNotAvailable)}
-          </Button>
+          />
         </>
       ) : (
         <p>Загрузка...</p>
