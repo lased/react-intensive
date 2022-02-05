@@ -10,8 +10,14 @@ const values = { username: '', password: '' }
 const rules = { username: ['required'], password: ['required'] }
 
 const AuthForm = ({ onSubmit }) => {
-  const { fields, errors, onChange, checkAllFields } = useForm(values, rules)
+  const { fields, errors, changeField, checkAllFields } = useForm(values, rules)
   const [formError, setFormError] = useState(false)
+
+  const onChangeHandler = (event) => {
+    const { name, value } = event.target
+
+    changeField(name, value)
+  }
   const onSubmitHandler = (event) => {
     event.preventDefault()
 
@@ -35,7 +41,7 @@ const AuthForm = ({ onSubmit }) => {
         name='username'
         label='Логин'
         value={fields.username}
-        onChange={onChange}
+        onChange={onChangeHandler}
         error={errors.username}
       />
       <Input
@@ -43,7 +49,7 @@ const AuthForm = ({ onSubmit }) => {
         label='Пароль'
         type='password'
         value={fields.password}
-        onChange={onChange}
+        onChange={onChangeHandler}
         error={errors.password}
       />
       <Button secondary>Войти</Button>

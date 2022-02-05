@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { Route, Switch } from 'react-router-dom'
+import { Redirect, Route, Switch } from 'react-router-dom'
 
 import { Header } from './components'
 import { AppBlock } from './blocks'
@@ -27,6 +27,9 @@ const App = () => {
             <Route path='/' component={Home} exact />
             <Route path='/about' component={About} />
             <Route path='/product/:id' component={Product} />
+            <Route path='*'>
+              <Redirect to='/' />
+            </Route>
           </Switch>
         </ContainerBlock>
       </AppBlock>

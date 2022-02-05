@@ -1,41 +1,43 @@
-import { useCallback, useState } from 'react'
+import { useState } from 'react'
 
 import { Validator } from '../shared'
 
 const useForm = (values, rules) => {
     const [fields, setFields] = useState(values)
     const [errors, setErrors] = useState({})
-    let isValid = true
 
-    const setFieldError = (field, value, fieldRules) => {
+    const checkField = (field, value, fieldRules) => {
         const validator = new Validator()
-        const fieldIsValid = validator.validate(value.trim(), fieldRules)
+        const fieldIsValid = validator.validate(value, fieldRules)
 
-        isValid &&= fieldIsValid
         setErrors((prevErrors) => ({
             ...prevErrors, [field]: validator.getErrorMessage()
         }))
+
+        return fieldIsValid
     }
     const clear = () => {
         setFields(values)
         setErrors({})
     }
-    const onChange = useCallback((event) => {
-        const { name: field, value } = event.target
-
-        setFieldError(field, value, rules[field])
+    const changeField = (field, value) => {
+        checkField(field, value, rules[field])
         setFields((prevFields) => ({ ...prevFields, [field]: value }))
-    }, [])
+    }
     const checkAllFields = () => {
-        Object.keys(rules).forEach((field) => setFieldError(field, fields[field], rules[field]))
+        let formIsValid = true
 
-        return isValid
+        Object.keys(rules).forEach((field) => {
+            formIsValid &&= checkField(field, fields[field], rules[field])
+        })
+
+        return formIsValid
     }
 
     return {
         fields,
         errors,
-        onChange,
+        changeField,
         checkAllFields,
         clear
     }

@@ -6,9 +6,10 @@ import { LocalStorage } from '../services'
 import { BASKET_KEY } from '../config'
 
 const BasketSubject = new Subject()
-const initialState = LocalStorage.getItem(BASKET_KEY) || []
 
 const useBasket = () => {
+    const initialState = LocalStorage.getItem(BASKET_KEY) || []
+
     const [basket, dispatch] = useReducer(BasketReducer, initialState)
     const addToBasket = (recivedData) => {
         BasketSubject.next(BasketAction.addItem(recivedData))

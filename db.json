@@ -1,16 +1,26 @@
 {
   "users": [
-    { "id": 1, "username": "admin", "password": "1", "role": "admin" },
-    { "id": 2, "username": "customer", "password": "1", "role": "customer" }
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "1",
+      "role": "admin"
+    },
+    {
+      "id": 2,
+      "username": "customer",
+      "password": "1",
+      "role": "customer"
+    }
   ],
   "products": [
     {
       "id": 1,
       "title": "240 ГБ Внутренний SSD диск Kingston A400 2.5\" SATA3 6.0 Гбит/с (SA400S37/240G)",
       "price": 2600,
-      "inStock": 2,
+      "inStock": "1",
       "image": "/images/products/1/1.png",
-      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae."
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae."
     },
     {
       "id": 2,
@@ -18,7 +28,7 @@
       "price": 3000,
       "inStock": 3,
       "image": "/images/products/2/1.png",
-      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae."
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae."
     },
     {
       "id": 3,
@@ -26,7 +36,7 @@
       "price": 12800,
       "inStock": 4,
       "image": "/images/products/3/1.png",
-      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae."
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae."
     },
     {
       "id": 4,
@@ -34,7 +44,7 @@
       "price": 400,
       "inStock": 8,
       "image": "/images/products/4/1.png",
-      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae."
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae."
     },
     {
       "id": 5,
@@ -42,7 +52,7 @@
       "price": 2600,
       "inStock": 1,
       "image": "/images/products/5/1.png",
-      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae."
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae."
     },
     {
       "id": 6,
@@ -50,7 +60,7 @@
       "price": 2500,
       "inStock": 0,
       "image": "/images/products/6/1.png",
-      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae."
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae."
     },
     {
       "id": 7,
@@ -58,7 +68,7 @@
       "price": 3433,
       "inStock": 12,
       "image": "/images/products/7/1.png",
-      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae."
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae."
     }
   ]
 }

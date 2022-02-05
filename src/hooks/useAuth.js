@@ -5,13 +5,15 @@ import { LocalStorage } from '../services'
 import { USER_KEY } from '../config'
 
 const AuthSubject = new Subject()
-const userInfo = LocalStorage.getItem(USER_KEY)
 
 const useAuth = () => {
+    const userInfo = LocalStorage.getItem(USER_KEY)
+    
     const [isAuth, setIsAuth] = useState(!!userInfo)
+    const [user, setUser] = useState(userInfo)
 
-    const login = (user) => {
-        AuthSubject.next(user)
+    const login = (recivedUser) => {
+        AuthSubject.next(recivedUser)
     }
     const logout = () => {
         AuthSubject.next(null)
@@ -21,12 +23,16 @@ const useAuth = () => {
         const subscription$ = AuthSubject.subscribe((recivedUser) => {
             if (recivedUser) {
                 const { username, role } = recivedUser
+                const newUserInfo = { username, role }
 
-                LocalStorage.setItem(USER_KEY, { username, role })
+                LocalStorage.setItem(USER_KEY, newUserInfo)
                 setIsAuth(true)
+                setUser(newUserInfo)
             } else {
                 LocalStorage.removeItem(USER_KEY)
                 setIsAuth(false)
+                setUser(null)
+                console.log(user, isAuth)
             }
         })
 
@@ -35,6 +41,7 @@ const useAuth = () => {
 
     return {
         isAuth,
+        user,
         login,
         logout
     }

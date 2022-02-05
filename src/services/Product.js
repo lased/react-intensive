@@ -16,6 +16,12 @@ class Product {
             map(({ data }) => data)
         )
     }
+    static update(id, updatedProduct) {
+        return from(axios.patch(`${API}/products/${id}`, updatedProduct)).pipe(
+            delay(500),
+            map(({ data }) => data)
+        )
+    }
 }
 
 export default Product
