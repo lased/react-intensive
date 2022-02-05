@@ -1,7 +1,7 @@
 import { forwardRef, useState, useImperativeHandle, useCallback } from 'react'
 
 import { DEFAULT_VALUES, RULES } from './config'
-import { Input, Textarea, Button } from '../'
+import { Input, Textarea, Button } from '..'
 import { ButtonsBlock, FormBlock, HeaderBlock } from './blocks'
 
 import { Validator } from '../../shared'
