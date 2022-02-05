@@ -2,9 +2,9 @@ import styled from 'styled-components'
 
 const HeaderBlock = styled.header({
     textAlign: 'center',
+    color: 'var(--text-color-10)',
     fontWeight: 'bold',
-    fontSize: '1.5rem',
-    color: 'var(--text-color-10)'
+    marginBottom: 20
 })
 
 export default HeaderBlock

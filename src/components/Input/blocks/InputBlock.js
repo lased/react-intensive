@@ -1,9 +1,13 @@
 import styled from 'styled-components';
 
-const getBorder = (error) => error ? '2px solid #b91c1c' : '2px solid #78909c'
+const getBorder = (error) => (
+  error
+    ? '2px solid #b91c1c'
+    : '2px solid var(--text-color-20)'
+)
 
 const InputBlock = styled.input(({ error }) => ({
-  color: '#FFF',
+  color: 'var(--text-color-10)',
   padding: 10,
   borderRadius: 5,
   border: getBorder(error),
@@ -11,7 +15,7 @@ const InputBlock = styled.input(({ error }) => ({
   backgroundColor: 'transparent',
 
   '::placeholder': {
-    color: '#94a3b8'
+    color: 'var(--text-color-20)'
   }
 }))
 

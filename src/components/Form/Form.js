@@ -1,12 +1,12 @@
-import { useState } from 'react'
+import { forwardRef, useState, useImperativeHandle, useCallback } from 'react'
 
 import { DEFAULT_VALUES, RULES } from './config'
-import { Input, Textarea, Button } from './components'
+import { Input, Textarea, Button } from '../'
 import { ButtonsBlock, FormBlock, HeaderBlock } from './blocks'
 
-import Validator from './Validator'
+import { Validator } from '../../shared'
 
-const Form = (props) => {
+const Form = (props, ref) => {
     const [fields, setFields] = useState(DEFAULT_VALUES)
     const [errors, setErrors] = useState({})
 
@@ -14,19 +14,19 @@ const Form = (props) => {
         setFields(DEFAULT_VALUES)
         setErrors({})
     }
-    const onBlurHandler = (event) => {
+    const onBlurHandler = useCallback((event) => {
         const { name: field, value } = event.target
 
-        setFields({ ...fields, [field]: value.trim() })
-    }
-    const onChangeHandler = (event) => {
+        setFields((prevFields) => ({ ...prevFields, [field]: value.trim() }))
+    }, [])
+    const onChangeHandler = useCallback((event) => {
         const { name: field, value } = event.target
         const validator = new Validator()
 
         validator.validate(value.trim(), RULES[field])
-        setFields({ ...fields, [field]: value })
-        setErrors({ ...errors, [field]: validator.getErrorMessage() })
-    }
+        setFields((prevFields) => ({ ...prevFields, [field]: value }))
+        setErrors((prevErrors) => ({ ...prevErrors, [field]: validator.getErrorMessage() }))
+    }, [])
     const onSubmitHandler = (event) => {
         event.preventDefault()
 
@@ -37,7 +37,9 @@ const Form = (props) => {
             const valid = validator.validate(fields[field], RULES[field])
 
             if (!valid) {
-                setErrors((currentErrors) => ({ ...currentErrors, [field]: validator.getErrorMessage() }))
+                setErrors((currentErrors) => ({
+                    ...currentErrors, [field]: validator.getErrorMessage()
+                }))
             }
 
             formValid &&= valid
@@ -48,6 +50,10 @@ const Form = (props) => {
             props.onSubmit(fields)
         }
     }
+
+    useImperativeHandle(ref, () => ({
+        reset: clearForm
+    }));
 
     return (
         <FormBlock onSubmit={onSubmitHandler} noValidate>
@@ -74,10 +80,7 @@ const Form = (props) => {
                 label='Дата рождения'
                 value={fields.date}
                 onChange={onChangeHandler}
-                onBlur={(event) => {
-                    onChangeHandler(event)
-                    onBlurHandler(event)
-                }}
+                onBlur={onChangeHandler}
                 error={errors.date}
             />
             <Input
@@ -127,10 +130,10 @@ const Form = (props) => {
             />
             <ButtonsBlock>
                 <Button error type='button' onClick={clearForm}>Отмена</Button>
-                <Button primary>Сохранить</Button>
+                <Button secondary>Сохранить</Button>
             </ButtonsBlock>
         </FormBlock>
     )
 }
 
-export default Form
+export default forwardRef(Form)

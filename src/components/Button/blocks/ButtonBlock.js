@@ -1,12 +1,13 @@
 import styled from 'styled-components'
 
-const getColor = ({ primary, error }) => {
-    if (primary || error) { return '#FFF' }
+const getColor = ({ primary, error, secondary }) => {
+    if (primary || error || secondary) { return '#FFF' }
 
     return '#000'
 }
-const getBackgroundColor = ({ primary, error }) => {
-    if (primary) { return '#15803d' }
+const getBackgroundColor = ({ primary, error, secondary }) => {
+    if (primary) { return '#334155' }
+    if (secondary) { return '#15803d' }
     if (error) { return '#d32f2f' }
 
     return '#FFF'

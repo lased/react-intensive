@@ -6,7 +6,7 @@ const ErrorBlock = styled.div({
     border: '2px solid #b91c1c',
     color: '#b91c1c',
     borderRadius: 5,
-    backgroundColor: '#94a3b8',
+    backgroundColor: 'var(--background-color-40)',
     fontWeight: 'bold',
 })
 

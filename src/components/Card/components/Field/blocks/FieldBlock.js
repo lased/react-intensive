@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const FieldBlock = styled.div({
-    color: '#FFF',
+    color: 'var(--text-color-10)',
     marginBottom: 10,
 
     '& a': {

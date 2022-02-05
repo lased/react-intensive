@@ -1,6 +1,6 @@
 import { memo } from 'react'
 
-import { LabelBlock, WrapperBlock, ErrorBlock } from '../shared/blocks'
+import { LabelBlock, WrapperBlock, ErrorBlock } from '../../shared'
 import { InputBlock } from './blocks'
 
 const setErrorProperty = (error) => error ? { error } : {}

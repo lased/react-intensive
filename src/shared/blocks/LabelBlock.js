@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const LabelBlock = styled.label({
-    color: '#FFF',
+    color: 'var(--text-color-10)',
     fontWeight: 'bold',
     marginBottom: 5
 })
