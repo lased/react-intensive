@@ -22,7 +22,10 @@ const useForm = (values, rules) => {
     }
     const changeField = (field, value) => {
         checkField(field, value, rules[field])
-        setFields((prevFields) => ({ ...prevFields, [field]: value }))
+        setFields((prevFields) => ({
+            ...prevFields,
+            [field]: (typeof values[field] === 'number' ? +value : value)
+        }))
     }
     const checkAllFields = () => {
         let formIsValid = true

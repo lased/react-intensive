@@ -1,20 +1,20 @@
-import { BasketBlock } from './blocks'
-import { useBasket } from '../../../../hooks'
-import { Helper } from '../../../../shared'
+import { useSelector } from 'react-redux'
 
-const getSum = (products) =>
-  products.reduce((acc, product) => acc + product.price * product.count, 0)
+import { Helper } from '../../../../shared'
+import { BasketBlock } from './blocks'
+
+const getSum = (products) => products.reduce((acc, product) => acc + product.price, 0)
 
 const Header = () => {
-  const { basket } = useBasket()
+  const basketSelector = useSelector((store) => store.basket)
 
   return (
     <BasketBlock>
       <div>
-        В корзине товаров: <strong>{basket.length}</strong>
+        В корзине товаров: <strong>{basketSelector.length}</strong>
       </div>
       <div>
-        на сумму: <strong>{Helper.getCurrency(getSum(basket))}</strong>
+        на сумму: <strong>{Helper.getCurrency(getSum(basketSelector))}</strong>
       </div>
     </BasketBlock>
   )

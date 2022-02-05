@@ -1,20 +1,23 @@
+import { useSelector, useDispatch } from 'react-redux'
 import { memo, useCallback } from 'react'
 
+import { useObservable } from '../../../../hooks'
 import { Product } from '../../../../services'
-import { useObservable, useBasket, useAuth } from '../../../../hooks'
 import { ProductCard } from '../ProductCard'
 import { ProductListBlock } from './blocks'
+import { BasketAction } from '../../../../store'
 
 const ProductList = () => {
-  const { basket, addToBasket, removeFromBasket } = useBasket()
+  const basketSelector = useSelector((store) => store.basket)
+  const authSelector = useSelector((store) => store.auth)
   const [products] = useObservable(Product.getAll)
-  const { isAuth } = useAuth()
+  const dispatch = useDispatch()
 
   const onClickHandler = useCallback((product, inBasket) => {
     if (inBasket) {
-      removeFromBasket(product)
+      dispatch(BasketAction.removeItem(product))
     } else {
-      addToBasket(product)
+      dispatch(BasketAction.addItem(product))
     }
   }, [])
 
@@ -25,8 +28,8 @@ const ProductList = () => {
           <ProductCard
             key={product.id}
             product={product}
-            inBasket={basket.some((currentProduct) => currentProduct.id === product.id)}
-            isAuth={isAuth}
+            inBasket={basketSelector.some((currentProduct) => currentProduct.id === product.id)}
+            isAuth={authSelector.isAuth}
             onClick={onClickHandler}
           />
         ))

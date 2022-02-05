@@ -17,6 +17,7 @@ class Product {
         )
     }
     static update(id, updatedProduct) {
+        debugger
         return from(axios.patch(`${API}/products/${id}`, updatedProduct)).pipe(
             delay(500),
             map(({ data }) => data)

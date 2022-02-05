@@ -1,38 +1,21 @@
-import { useState } from 'react'
+import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
+import { useState } from 'react'
 
-import {
-  DescriptionBlock,
-  ImageBlock,
-  PriceBlock,
-  ProductBlock,
-  ProductInfoBlock,
-  StockBlock,
-  TitleBlock,
-} from './blocks'
+import { ImageBlock } from './components/ProductInfo/blocks'
 import { Product as ProductService } from '../../services'
-import { useAuth, useBasket, useObservable } from '../../hooks'
-import { AddToBasket, Button, Helper } from '../../shared'
-import { UpdateForm } from './components'
+import { useObservable } from '../../hooks'
+import { ProductInfo, UpdateForm } from './components'
+import { ProductBlock } from './blocks'
+import { Button } from '../../shared'
 
 const Product = () => {
   const { id } = useParams()
   const [product, setProduct] = useObservable(ProductService.getById, null, id)
-  const { basket, addToBasket, removeFromBasket } = useBasket()
   const [inEditorMode, setInEditorMode] = useState(false)
-  const { isAuth, user } = useAuth()
-
-  const inBasket = basket.some((currentProduct) => currentProduct.id === +id)
-  const isNotAvailable = product && !product.inStock
+  const auth = useSelector((store) => store.auth)
 
   const showUpdateForm = () => setInEditorMode(!inEditorMode)
-  const onClickHandler = () => {
-    if (inBasket) {
-      removeFromBasket(product)
-    } else {
-      addToBasket(product)
-    }
-  }
   const onUpdateProduct = (recivedProduct) => {
     const updatedProduct = { ...product, ...recivedProduct }
 
@@ -48,7 +31,7 @@ const Product = () => {
     <ProductBlock>
       {product ? (
         <>
-          {isAuth && user && user.role === 'admin' && (
+          {auth.isAuth && auth.user && auth.user.role === 'admin' && (
             <Button secondary={!inEditorMode} error={inEditorMode} onClick={showUpdateForm}>
               {inEditorMode ? 'Отмена' : 'Редактировать'}
             </Button>
@@ -57,24 +40,7 @@ const Product = () => {
           {inEditorMode ? (
             <UpdateForm data={product} onSubmit={onUpdateProduct} />
           ) : (
-            <>
-              <TitleBlock>{product.title}</TitleBlock>
-              <DescriptionBlock>{product.description}</DescriptionBlock>
-              <ProductInfoBlock>
-                <StockBlock isNotAvailable={isNotAvailable}>
-                  В наличии: <strong>{product.inStock}</strong>
-                </StockBlock>
-                <PriceBlock>
-                  Цена: <strong>{Helper.getCurrency(product.price)}</strong>
-                </PriceBlock>
-              </ProductInfoBlock>
-              <AddToBasket
-                inBasket={inBasket}
-                isNotAvailable={isNotAvailable}
-                isAuth={isAuth}
-                onClick={onClickHandler}
-              />
-            </>
+            <ProductInfo product={product} />
           )}
         </>
       ) : (

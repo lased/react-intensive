@@ -1,5 +1,5 @@
-const ADD = 'add'
-const REMOVE = 'remove'
+const ADD = 'ADD'
+const REMOVE = 'REMOVE'
 
 export {
     ADD,

@@ -1,8 +1,10 @@
-import { BasketActionType } from '../'
 import { LocalStorage } from '../../services'
 import { BASKET_KEY } from '../../config'
+import { BasketActionType } from '../types'
 
-const BasketReducer = (products, { type, product }) => {
+const initialBasket = LocalStorage.getItem(BASKET_KEY) || []
+
+const basketReducer = (products = initialBasket, { type, product }) => {
     let newProducts
 
     switch (type) {
@@ -10,19 +12,7 @@ const BasketReducer = (products, { type, product }) => {
             newProducts = [...products, product]
             break
         case BasketActionType.REMOVE:
-            newProducts = products.filter((currentProduct) => {
-                if (currentProduct.id === product.id) {
-                    const diff = currentProduct.count - product.count
-
-                    if (diff <= 0) {
-                        return false
-                    }
-
-                    return { ...currentProduct, count: diff }
-                }
-
-                return true
-            })
+            newProducts = products.filter((currentProduct) => currentProduct.id !== product.id)
             break
         default:
             newProducts = products
@@ -33,4 +23,4 @@ const BasketReducer = (products, { type, product }) => {
     return newProducts
 }
 
-export default BasketReducer
+export default basketReducer

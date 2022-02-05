@@ -1,18 +1,15 @@
 import { BasketActionType } from '../'
 
-const addItem = (product, count = 1) => ({
-    type: BasketActionType.ADD, product: {
-        id: product.id,
-        price: product.price,
-        count: count,
-    }
+const getProductInfo = (product) => ({
+    id: product.id,
+    price: product.price,
 })
-const removeItem = (product, count = 1) => ({
-    type: BasketActionType.REMOVE, product: {
-        id: product.id,
-        price: product.price,
-        count: count,
-    }
+
+const addItem = (product) => ({
+    type: BasketActionType.ADD, product: getProductInfo(product)
+})
+const removeItem = (product) => ({
+    type: BasketActionType.REMOVE, product: getProductInfo(product)
 })
 
 export {
