@@ -5,11 +5,11 @@ import { AddToBasket, Helper } from '../../../../shared'
 
 const formatPrice = (price) => Helper.getCurrency(price)
 
-const ProductCard = ({ product, onClick, inBasket, isAuth }) => {
+const ProductCard = ({ product, onClick, inBasket, inBasketCount, isAuth }) => {
   const isNotAvailable = !product.inStock
   const onClickHandler = () => {
-    if (!isNotAvailable) {
-      onClick(product, inBasket)
+    if (isAuth && (inBasket || !isNotAvailable)) {
+      onClick(product, inBasketCount)
     }
   }
 

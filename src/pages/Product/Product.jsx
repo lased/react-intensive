@@ -3,8 +3,8 @@ import { useParams } from 'react-router-dom'
 import { useState } from 'react'
 
 import { ImageBlock } from './components/ProductInfo/blocks'
-import { Product as ProductService } from '../../services'
 import { ProductInfo, UpdateForm } from './components'
+import { ProductService } from '../../services'
 import { useObservable } from '../../hooks'
 import { BasketAction } from '../../store'
 import { ProductBlock } from './blocks'
@@ -18,32 +18,26 @@ const Product = () => {
   const auth = useSelector((store) => store.auth)
   const dispatch = useDispatch()
 
+  const inBasket = basket.find((basketProduct) => basketProduct.id === product.id)
   const showUpdateForm = () => setInEditorMode(!inEditorMode)
   const onUpdateProduct = (recivedProduct) => {
     const updatableProduct = { ...product, ...recivedProduct }
 
     ProductService.update(product.id, updatableProduct).subscribe((updatedProduct) => {
       if (updatedProduct) {
-        const inBasket = basket.find((currentProduct) => currentProduct.id === updatedProduct.id)
-
         setInEditorMode(!inEditorMode)
         setProduct(updatedProduct)
-
-        if (inBasket) {
-          if (!updatedProduct.inStock) {
-            return dispatch(BasketAction.removeItem(inBasket))
-          }
-
-          const { description, ...allProps } = updatedProduct
-
-          if (inBasket.count > updatedProduct.inStock) {
-            allProps.count = updatedProduct.inStock
-          }
-
-          dispatch(BasketAction.updateItem({ ...inBasket, ...allProps }))
-        }
       }
     })
+  }
+  const onBasketClickHandler = () => {
+    if (inBasket) {
+      product.inStock += inBasket.count
+      dispatch(BasketAction.removeItemAsync(product.id, inBasket.count))
+    } else {
+      product.inStock -= 1
+      dispatch(BasketAction.addItemAsync(product, 1))
+    }
   }
 
   return (
@@ -59,7 +53,12 @@ const Product = () => {
           {inEditorMode ? (
             <UpdateForm data={product} onSubmit={onUpdateProduct} />
           ) : (
-            <ProductInfo product={product} />
+            <ProductInfo
+              product={product}
+              isAuth={auth.isAuth}
+              inBasket={inBasket}
+              onBasketClick={onBasketClickHandler}
+            />
           )}
         </>
       ) : (
@@ -70,3 +69,12 @@ const Product = () => {
 }
 
 export default Product
+// const onClickHandler = () => {
+//   if (inBasket) {
+//     product.inStock += inBasket.count
+//     dispatch(BasketAction.removeItemAsync(inBasket.id, inBasket.count))
+//   } else {
+//     product.inStock -= 1
+//     dispatch(BasketAction.addItemAsync(product, 1))
+//   }
+// }

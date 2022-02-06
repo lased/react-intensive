@@ -28,7 +28,9 @@ const useForm = (values, rules) => {
         let formIsValid = true
 
         Object.keys(rules).forEach((field) => {
-            formIsValid &&= checkField(field, fields[field], rules[field])
+            const fieldIsValid = checkField(field, fields[field], rules[field])
+
+            formIsValid &&= fieldIsValid
         })
 
         return formIsValid

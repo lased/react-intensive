@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 import { Button, ErrorBlock, Input } from '../..'
-import { User } from '../../../services'
+import { UserService } from '../../../services'
 import { useForm } from '../../../hooks'
 import { FormBlock } from './blocks'
 
@@ -23,7 +23,7 @@ const AuthForm = ({ onSubmit }) => {
     const isValid = checkAllFields()
 
     if (isValid) {
-      User.login(fields.username, fields.password).subscribe((user) => {
+      UserService.login(fields.username, fields.password).subscribe((user) => {
         if (user) {
           onSubmit(user)
         } else {

@@ -1,18 +1,19 @@
-import { LocalStorage } from '../../services'
-import { BASKET_KEY } from '../../config'
 import { BasketActionType } from '../types'
 
-const initialBasket = LocalStorage.getItem(BASKET_KEY) || []
+const initialBasket = []
 
-const basketReducer = (products = initialBasket, { type, product }) => {
+const basketReducer = (products = initialBasket, { type, id, product, loadProducts }) => {
     let newProducts
 
     switch (type) {
+        case BasketActionType.LOAD:
+            newProducts = [...loadProducts]
+            break
         case BasketActionType.ADD:
             newProducts = [...products, product]
             break
         case BasketActionType.REMOVE:
-            newProducts = products.filter((currentProduct) => currentProduct.id !== product.id)
+            newProducts = products.filter((currentProduct) => currentProduct.id !== id)
             break
         case BasketActionType.UPDATE:
             newProducts = products.map(
@@ -24,8 +25,6 @@ const basketReducer = (products = initialBasket, { type, product }) => {
         default:
             newProducts = [...products]
     }
-
-    LocalStorage.setItem(BASKET_KEY, newProducts)
 
     return newProducts
 }

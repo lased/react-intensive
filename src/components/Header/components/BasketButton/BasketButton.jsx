@@ -11,14 +11,16 @@ const BasketButton = () => {
   const basket = useSelector((store) => store.basket)
   const dispatch = useDispatch()
 
-  const onRemoveHandler = (product) => dispatch(BasketAction.removeItem(product))
   const onClickHandler = () => setShowModal(true)
   const onCloseHandler = () => setShowModal(false)
-  const onUpdateHandler = (product) => {
-    if (product.count) {
-      dispatch(BasketAction.updateItem(product))
+  const onRemoveHandler = (id, count) => dispatch(BasketAction.removeItemAsync(id, count))
+  const onUpdateHandler = (product, prevCount, count) => {
+    if (count) {
+      if (prevCount !== count) {
+        dispatch(BasketAction.updateItemAsync(product, prevCount, count))
+      }
     } else {
-      onRemoveHandler(product)
+      onRemoveHandler(product.id)
     }
   }
 

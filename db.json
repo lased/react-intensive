@@ -13,12 +13,13 @@
       "role": "customer"
     }
   ],
+  "basket": [],
   "products": [
     {
       "id": 1,
       "title": "240 ГБ Внутренний SSD диск Kingston A400 2.5\" SATA3 6.0 Гбит/с (SA400S37/240G)",
       "price": 2600,
-      "inStock": 1,
+      "inStock": 0,
       "image": "/images/products/1/1.png",
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae."
     },

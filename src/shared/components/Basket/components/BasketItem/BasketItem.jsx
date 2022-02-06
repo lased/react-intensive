@@ -4,8 +4,8 @@ import { BasketItemBlock, ImageBlock, PriceBlock, TitleBlock, InputBlock } from 
 import { Helper, Input } from '../../../../'
 import { ButtonBlock } from './blocks'
 
-const BasketItem = ({ product, onRemove, onUpdate }) => {
-  const [count, setCount] = useState(product.count)
+const BasketItem = ({ product, inBasketCount, onRemove, onUpdate }) => {
+  const [count, setCount] = useState(inBasketCount)
 
   const onChangeHandler = (event) => {
     let { value } = event.target
@@ -16,17 +16,17 @@ const BasketItem = ({ product, onRemove, onUpdate }) => {
     let { value } = event.target
 
     if (!value || isNaN(value)) {
-      return onRemove(product)
+      return onRemove(product.id, inBasketCount)
     }
 
     value = Math.abs(value)
 
-    if (value > product.inStock) {
-      value = product.inStock
+    if (value > product.inStock + inBasketCount) {
+      value = product.inStock + inBasketCount
     }
 
     setCount(value)
-    onUpdate({ ...product, count: value })
+    onUpdate(product, inBasketCount, value)
   }
 
   return (
@@ -43,7 +43,7 @@ const BasketItem = ({ product, onRemove, onUpdate }) => {
           onChange={onChangeHandler}
         />
       </InputBlock>
-      <ButtonBlock error onClick={() => onRemove(product)}>
+      <ButtonBlock error onClick={() => onRemove(product.id, inBasketCount)}>
         X
       </ButtonBlock>
     </BasketItemBlock>

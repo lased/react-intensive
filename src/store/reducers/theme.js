@@ -13,9 +13,6 @@ const themeReducer = (currentTheme = initialTheme, { type, theme }) => {
             newTheme = currentTheme
     }
 
-    document.body.classList.remove(currentTheme)
-    document.body.classList.add(newTheme)
-
     return newTheme
 }
 
