@@ -25,8 +25,8 @@
     {
       "id": 2,
       "title": "1 ТБ Внутренний жесткий диск Toshiba P300 (HDWD110UZSVA)",
-      "price": 3000,
-      "inStock": 31,
+      "price": 3600,
+      "inStock": 3,
       "image": "/images/products/2/1.png",
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae."
     },
@@ -66,7 +66,7 @@
       "id": 7,
       "title": "Блок питания компьютера Aerocool VX PLUS 750W, 750 Вт, черный",
       "price": 3433,
-      "inStock": 12,
+      "inStock": 10,
       "image": "/images/products/7/1.png",
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia eos tenetur cum perferendis adipisci molestiae ipsa optio nisi ex cumque similique consequuntur sapiente ipsam, quas labore minus magni repudiandae."
     }

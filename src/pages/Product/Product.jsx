@@ -1,11 +1,12 @@
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { useState } from 'react'
 
 import { ImageBlock } from './components/ProductInfo/blocks'
 import { Product as ProductService } from '../../services'
-import { useObservable } from '../../hooks'
 import { ProductInfo, UpdateForm } from './components'
+import { useObservable } from '../../hooks'
+import { BasketAction } from '../../store'
 import { ProductBlock } from './blocks'
 import { Button } from '../../shared'
 
@@ -13,16 +14,24 @@ const Product = () => {
   const { id } = useParams()
   const [product, setProduct] = useObservable(ProductService.getById, null, id)
   const [inEditorMode, setInEditorMode] = useState(false)
+  const basket = useSelector((store) => store.basket)
   const auth = useSelector((store) => store.auth)
+  const dispatch = useDispatch()
 
   const showUpdateForm = () => setInEditorMode(!inEditorMode)
   const onUpdateProduct = (recivedProduct) => {
-    const updatedProduct = { ...product, ...recivedProduct }
+    const updatableProduct = { ...product, ...recivedProduct }
 
-    ProductService.update(product.id, updatedProduct).subscribe((data) => {
-      if (data) {
+    ProductService.update(product.id, updatableProduct).subscribe((updatedProduct) => {
+      if (updatedProduct) {
+        const inBasket = basket.some((currentProduct) => currentProduct.id === updatedProduct.id)
+
         setInEditorMode(!inEditorMode)
         setProduct(updatedProduct)
+
+        if (inBasket) {
+          dispatch(BasketAction.updateItem(updatedProduct))
+        }
       }
     })
   }

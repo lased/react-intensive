@@ -5,7 +5,8 @@ class Helper {
         const numberFormat = new Intl.NumberFormat(localization.locale, {
             ...options,
             style: 'currency',
-            currency: localization.currency
+            currency: localization.currency,
+            maximumFractionDigits: 0
         })
 
         return numberFormat.format(value)

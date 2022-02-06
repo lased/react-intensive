@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 
-const BasketBlock = styled.div({
+import { Button } from '../../../../../shared'
+
+const BasketBlock = styled(Button)({
     backgroundColor: 'var(--background-color-30)',
     display: 'flex',
     justifyContent: 'center',

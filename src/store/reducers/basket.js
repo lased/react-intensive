@@ -14,8 +14,13 @@ const basketReducer = (products = initialBasket, { type, product }) => {
         case BasketActionType.REMOVE:
             newProducts = products.filter((currentProduct) => currentProduct.id !== product.id)
             break
+        case BasketActionType.UPDATE:
+            newProducts = products.map(
+                (currentProduct) => currentProduct.id === product.id ? product : currentProduct
+            )
+            break
         default:
-            newProducts = products
+            newProducts = [...products]
     }
 
     LocalStorage.setItem(BASKET_KEY, newProducts)

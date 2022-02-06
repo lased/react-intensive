@@ -1,5 +1,7 @@
 export * from './AddToBasket'
 export * from './Textarea'
+export * from './AuthForm'
+export * from './Basket'
 export * from './Button'
 export * from './Modal'
 export * from './Input'

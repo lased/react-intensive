@@ -8,8 +8,8 @@ import { ProductListBlock } from './blocks'
 import { BasketAction } from '../../../../store'
 
 const ProductList = () => {
-  const basketSelector = useSelector((store) => store.basket)
-  const authSelector = useSelector((store) => store.auth)
+  const basket = useSelector((store) => store.basket)
+  const auth = useSelector((store) => store.auth)
   const [products] = useObservable(Product.getAll)
   const dispatch = useDispatch()
 
@@ -28,8 +28,8 @@ const ProductList = () => {
           <ProductCard
             key={product.id}
             product={product}
-            inBasket={basketSelector.some((currentProduct) => currentProduct.id === product.id)}
-            isAuth={authSelector.isAuth}
+            inBasket={basket.some((currentProduct) => currentProduct.id === product.id)}
+            isAuth={auth.isAuth}
             onClick={onClickHandler}
           />
         ))

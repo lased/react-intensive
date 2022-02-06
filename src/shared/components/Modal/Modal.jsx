@@ -1,12 +1,12 @@
-import { ContainerBlock, ModalBlock, CloseButtonBlock } from './blocks'
+import { ContainerBlock, ModalBlock, CloseButtonBlock, ContentBlock } from './blocks'
 
-const Modal = ({ children, onClose }) => (
+const Modal = ({ children, onClose, maxWidth, maxHeight }) => (
   <ContainerBlock>
-    <ModalBlock>
+    <ModalBlock maxWidth={maxWidth}>
       <CloseButtonBlock error onClick={onClose}>
         X
       </CloseButtonBlock>
-      {children}
+      <ContentBlock maxHeight={maxHeight}>{children}</ContentBlock>
     </ModalBlock>
   </ContainerBlock>
 )

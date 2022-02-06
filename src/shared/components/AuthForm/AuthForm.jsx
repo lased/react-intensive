@@ -1,9 +1,8 @@
 import { useState } from 'react'
 
-import { Button, ErrorBlock, Input } from '../../../../../../shared'
-import { LocalStorage, User } from '../../../../../../services'
-import { USER_KEY } from '../../../../../../config'
-import { useForm } from '../../../../../../hooks'
+import { Button, ErrorBlock, Input } from '../..'
+import { User } from '../../../services'
+import { useForm } from '../../../hooks'
 import { FormBlock } from './blocks'
 
 const values = { username: '', password: '' }

@@ -7,24 +7,22 @@ const initialState = { isAuth: !!userInfo, user: userInfo }
 
 const authReducer = (currentState = initialState, { type, user }) => {
     switch (type) {
-        case AuthActionType.LOGIN: {
+        case AuthActionType.LOGIN:
             LocalStorage.setItem(USER_KEY, user)
 
             return {
                 isAuth: true,
                 user
             }
-        }
-        case AuthActionType.LOGOUT: {
+        case AuthActionType.LOGOUT:
             LocalStorage.removeItem(USER_KEY)
 
             return {
                 isAuth: false,
                 user: null
             }
-        }
         default:
-            return currentState
+            return { ...currentState }
     }
 }
 

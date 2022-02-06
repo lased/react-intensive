@@ -2,32 +2,35 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useState } from 'react'
 
 import { AuthAction } from '../../../../store'
-import { Modal } from '../../../../shared'
-import { AuthForm } from './components'
+import { Modal, AuthForm } from '../../../../shared'
 import { LoginBlock } from './blocks'
 
 const getText = (isAuth) => (isAuth ? 'Выйти' : 'Войти')
 
 const Login = () => {
-  const [isShow, setIsShow] = useState(false)
-  const authSelector = useSelector((store) => store.auth)
+  const [showModal, setShowModal] = useState(false)
+  const auth = useSelector((store) => store.auth)
   const dispatch = useDispatch()
 
-  const onCloseHandler = () => setIsShow(false)
-  const onSubmitHandler = (user) => (dispatch(AuthAction.login(user)), onCloseHandler())
-  const onClickHandler = () =>
-    authSelector.isAuth ? dispatch(AuthAction.logout()) : setIsShow(true)
+  const onCloseHandler = () => setShowModal(false)
+  const onSubmitHandler = (user) => {
+    dispatch(AuthAction.login(user))
+    onCloseHandler()
+  }
+  const onClickHandler = () => {
+    if (auth.isAuth) {
+      dispatch(AuthAction.logout())
+    } else {
+      setShowModal(true)
+    }
+  }
 
   return (
     <>
-      <LoginBlock
-        error={authSelector.isAuth}
-        secondary={!authSelector.isAuth}
-        onClick={onClickHandler}
-      >
-        {getText(authSelector.isAuth)}
+      <LoginBlock error={auth.isAuth} secondary={!auth.isAuth} onClick={onClickHandler}>
+        {getText(auth.isAuth)}
       </LoginBlock>
-      {!authSelector.isAuth && isShow && (
+      {!auth.isAuth && showModal && (
         <Modal onClose={onCloseHandler}>
           <AuthForm onSubmit={onSubmitHandler} />
         </Modal>
