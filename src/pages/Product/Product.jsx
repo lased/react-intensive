@@ -24,13 +24,23 @@ const Product = () => {
 
     ProductService.update(product.id, updatableProduct).subscribe((updatedProduct) => {
       if (updatedProduct) {
-        const inBasket = basket.some((currentProduct) => currentProduct.id === updatedProduct.id)
+        const inBasket = basket.find((currentProduct) => currentProduct.id === updatedProduct.id)
 
         setInEditorMode(!inEditorMode)
         setProduct(updatedProduct)
 
         if (inBasket) {
-          dispatch(BasketAction.updateItem(updatedProduct))
+          if (!updatedProduct.inStock) {
+            return dispatch(BasketAction.removeItem(inBasket))
+          }
+
+          const { description, ...allProps } = updatedProduct
+
+          if (inBasket.count > updatedProduct.inStock) {
+            allProps.count = updatedProduct.inStock
+          }
+
+          dispatch(BasketAction.updateItem({ ...inBasket, ...allProps }))
         }
       }
     })

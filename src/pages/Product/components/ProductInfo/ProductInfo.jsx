@@ -9,14 +9,23 @@ const ProductInfo = ({ product }) => {
   const auth = useSelector((store) => store.auth)
   const dispatch = useDispatch()
 
-  const inBasket = basket.some((currentProduct) => currentProduct.id === product.id)
-  const { title, description, inStock, price } = product
+  const inBasket = basket.find((currentProduct) => currentProduct.id === product.id)
+  const { id, image, title, description, inStock, price } = product
 
   const onClickHandler = () => {
     if (inBasket) {
-      dispatch(BasketAction.removeItem(product))
+      dispatch(BasketAction.removeItem(inBasket))
     } else {
-      dispatch(BasketAction.addItem(product))
+      const basketProduct = {
+        id,
+        title,
+        image,
+        inStock,
+        price,
+        count: 1,
+      }
+
+      dispatch(BasketAction.addItem(basketProduct))
     }
   }
 

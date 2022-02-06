@@ -17,7 +17,17 @@ const ProductList = () => {
     if (inBasket) {
       dispatch(BasketAction.removeItem(product))
     } else {
-      dispatch(BasketAction.addItem(product))
+      const { id, title, image, inStock, price } = product
+      const basketProduct = {
+        id,
+        title,
+        image,
+        inStock,
+        price,
+        count: 1,
+      }
+
+      dispatch(BasketAction.addItem(basketProduct))
     }
   }, [])
 

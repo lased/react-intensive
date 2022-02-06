@@ -9,6 +9,7 @@ const ContentBlock = styled.div(({ maxHeight }) => ({
 
     '::-webkit-scrollbar': {
         width: 8,
+        height: 8,
 
         '&-track': {
             background: 'rgba(0,0,0,.2)',

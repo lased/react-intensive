@@ -16,7 +16,9 @@ const basketReducer = (products = initialBasket, { type, product }) => {
             break
         case BasketActionType.UPDATE:
             newProducts = products.map(
-                (currentProduct) => currentProduct.id === product.id ? product : currentProduct
+                (currentProduct) => currentProduct.id === product.id
+                    ? { ...currentProduct, ...product }
+                    : currentProduct
             )
             break
         default:

@@ -14,6 +14,13 @@ const BasketButton = () => {
   const onRemoveHandler = (product) => dispatch(BasketAction.removeItem(product))
   const onClickHandler = () => setShowModal(true)
   const onCloseHandler = () => setShowModal(false)
+  const onUpdateHandler = (product) => {
+    if (product.count) {
+      dispatch(BasketAction.updateItem(product))
+    } else {
+      onRemoveHandler(product)
+    }
+  }
 
   return (
     <>
@@ -23,7 +30,7 @@ const BasketButton = () => {
       {showModal && (
         <Modal maxWidth={600} maxHeight='75vh' onClose={onCloseHandler}>
           <BasketInfo basket={basket} />
-          <Basket basket={basket} onRemove={onRemoveHandler} />
+          <Basket basket={basket} onRemove={onRemoveHandler} onUpdate={onUpdateHandler} />
         </Modal>
       )}
     </>

@@ -3,7 +3,7 @@ import { useForm } from '../../../../hooks'
 import { FormBlock } from './blocks'
 import { useCallback } from 'react'
 
-const values = { title: '', price: 0, inStock: 0, description: '' }
+const values = { title: '', price: '', inStock: '', description: '' }
 const rules = {
   title: ['required', { maxLength: 120 }],
   description: ['required', { maxLength: 600 }],
@@ -15,9 +15,9 @@ const UpdateForm = ({ data, onSubmit }) => {
   const { fields, errors, changeField, checkAllFields } = useForm({ ...values, ...data }, rules)
 
   const onChangeHandler = useCallback((event) => {
-    const { name, value } = event.target
+    const { name, value, type } = event.target
 
-    changeField(name, value)
+    changeField(name, value && type === 'number' ? Math.abs(value) : value)
   }, [])
   const onSubmitHandler = (event) => {
     event.preventDefault()
