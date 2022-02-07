@@ -1,5 +1,5 @@
-import { useDispatch, useSelector } from 'react-redux'
-import { useState } from 'react'
+import { shallowEqual, useDispatch, useSelector } from 'react-redux'
+import { memo, useState } from 'react'
 
 import { Modal, AuthForm } from '../../../../shared'
 import { LocalStorageService } from '../../../../services'
@@ -11,7 +11,7 @@ const getText = (isAuth) => (isAuth ? 'Выйти' : 'Войти')
 
 const Login = () => {
   const [showModal, setShowModal] = useState(false)
-  const auth = useSelector((store) => store.auth)
+  const auth = useSelector((store) => store.auth, shallowEqual)
   const dispatch = useDispatch()
 
   const onCloseHandler = () => setShowModal(false)
@@ -43,4 +43,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default memo(Login)

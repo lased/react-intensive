@@ -1,4 +1,4 @@
-import React from 'react'
+import { memo } from 'react'
 
 import { NavBlock, LinkBlock } from './blocks'
 
@@ -13,4 +13,4 @@ const Nav = () => (
   </NavBlock>
 )
 
-export default Nav
+export default memo(Nav)

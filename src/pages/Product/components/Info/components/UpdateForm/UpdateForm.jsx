@@ -1,7 +1,8 @@
-import { Input, Textarea, Button } from '../../../../shared'
-import { useForm } from '../../../../hooks'
-import { FormBlock } from './blocks'
 import { useCallback } from 'react'
+
+import { Input, Textarea, Button } from '../../../../../../shared'
+import { useForm } from '../../../../../../hooks'
+import { FormBlock } from './blocks'
 
 const values = { title: '', price: '', inStock: '', description: '' }
 const rules = {
@@ -11,8 +12,8 @@ const rules = {
   inStock: ['required'],
 }
 
-const UpdateForm = ({ data, onSubmit }) => {
-  const { fields, errors, changeField, checkAllFields } = useForm({ ...values, ...data }, rules)
+const UpdateForm = ({ product, onSubmit }) => {
+  const { fields, errors, changeField, checkAllFields } = useForm({ ...values, ...product }, rules)
 
   const onChangeHandler = useCallback((event) => {
     const { name, value, type } = event.target

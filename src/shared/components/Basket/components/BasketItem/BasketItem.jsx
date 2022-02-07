@@ -1,7 +1,14 @@
-import { BasketItemBlock, ImageBlock, PriceBlock, TitleBlock, InputBlock } from './blocks'
-import { ButtonBlock } from './blocks'
-import { Helper } from '../../../../'
-import { CountButton } from '../../..'
+import { memo } from 'react'
+
+import {
+  BasketItemBlock,
+  ImageBlock,
+  PriceBlock,
+  TitleBlock,
+  InputBlock,
+  ButtonBlock,
+} from './blocks'
+import { Helper, CountButton } from '../../../../'
 
 const BasketItem = ({ product, inBasket, onRemove, onUpdate }) => {
   const changeCount = (value) => {
@@ -28,4 +35,4 @@ const BasketItem = ({ product, inBasket, onRemove, onUpdate }) => {
   )
 }
 
-export default BasketItem
+export default memo(BasketItem)

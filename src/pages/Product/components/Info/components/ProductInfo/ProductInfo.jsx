@@ -1,5 +1,5 @@
 import { DescriptionBlock, PriceBlock, ProductInfoBlock, StockBlock, TitleBlock } from './blocks'
-import { AddToBasket, Helper } from '../../../../shared'
+import { AddToBasket, Helper } from '../../../../../../shared'
 
 const ProductInfo = ({ isAuth, inBasket, product, onBasketClick }) => {
   const inStockInfo = isNaN(inBasket && inBasket.inStock) ? product.inStock : inBasket.inStock
@@ -17,7 +17,7 @@ const ProductInfo = ({ isAuth, inBasket, product, onBasketClick }) => {
         </PriceBlock>
       </ProductInfoBlock>
       <AddToBasket
-        inBasket={inBasket}
+        inBasket={!!inBasket}
         isNotAvailable={!product.inStock}
         isAuth={isAuth}
         onClick={onBasketClick}

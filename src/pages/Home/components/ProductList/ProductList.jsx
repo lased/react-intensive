@@ -1,4 +1,4 @@
-import { useSelector, useDispatch } from 'react-redux'
+import { shallowEqual, useSelector, useDispatch } from 'react-redux'
 import { memo, useCallback } from 'react'
 
 import { useObservable } from '../../../../hooks'
@@ -8,8 +8,8 @@ import { ProductListBlock } from './blocks'
 import { BasketAction } from '../../../../store'
 
 const ProductList = () => {
-  const basket = useSelector((store) => store.basket)
-  const auth = useSelector((store) => store.auth)
+  const basket = useSelector((store) => store.basket, shallowEqual)
+  const auth = useSelector((store) => store.auth, shallowEqual)
   const [products] = useObservable(ProductService.getAll)
   const dispatch = useDispatch()
 
@@ -34,8 +34,7 @@ const ProductList = () => {
             <ProductCard
               key={product.id}
               product={product}
-              inBasket={!!basketProductInfo}
-              inBasketCount={(basketProductInfo && basketProductInfo.count) || null}
+              inBasket={basketProductInfo || null}
               isAuth={auth.isAuth}
               onClick={onClickHandler}
             />

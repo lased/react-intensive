@@ -5,11 +5,11 @@ import { AddToBasket, Helper } from '../../../../shared'
 
 const formatPrice = (price) => Helper.getCurrency(price)
 
-const ProductCard = ({ product, onClick, inBasket, inBasketCount, isAuth }) => {
+const ProductCard = ({ product, onClick, inBasket, isAuth }) => {
   const isNotAvailable = !product.inStock
   const onClickHandler = () => {
     if (isAuth && (inBasket || !isNotAvailable)) {
-      onClick(product, inBasketCount)
+      onClick(product, inBasket && inBasket.count)
     }
   }
 
@@ -19,7 +19,7 @@ const ProductCard = ({ product, onClick, inBasket, inBasketCount, isAuth }) => {
       <TitleBlock to={`/product/${product.id}`}>{product.title}</TitleBlock>
       <PriceBlock>{formatPrice(product.price)}</PriceBlock>
       <AddToBasket
-        inBasket={inBasket}
+        inBasket={!!inBasket}
         isNotAvailable={isNotAvailable}
         isAuth={isAuth}
         onClick={onClickHandler}

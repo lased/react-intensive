@@ -1,2 +1,1 @@
-export * from './UpdateForm'
-export * from './ProductInfo'
+export * from './Info'

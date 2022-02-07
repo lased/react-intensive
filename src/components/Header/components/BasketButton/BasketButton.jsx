@@ -1,5 +1,5 @@
-import { useSelector, useDispatch } from 'react-redux'
-import { useState } from 'react'
+import { useSelector, useDispatch, shallowEqual } from 'react-redux'
+import { useState, memo, useCallback } from 'react'
 
 import { Basket, Modal } from '../../../../shared'
 import { BasketAction } from '../../../../store'
@@ -8,16 +8,19 @@ import { BasketBlock } from './blocks'
 
 const BasketButton = () => {
   const [showModal, setShowModal] = useState(false)
-  const basket = useSelector((store) => store.basket)
+  const basket = useSelector((store) => store.basket, shallowEqual)
   const dispatch = useDispatch()
 
   const onClickHandler = () => setShowModal(true)
   const onCloseHandler = () => setShowModal(false)
-  const onRemoveHandler = (id, count) => dispatch(BasketAction.removeItemAsync(id, count))
-  const onUpdateHandler = (product, prevCount, count) => {
+  const onRemoveHandler = useCallback(
+    (id, count) => dispatch(BasketAction.removeItemAsync(id, count)),
+    []
+  )
+  const onUpdateHandler = useCallback((product, prevCount, count) => {
     dispatch(BasketAction.updateItemAsync(product, prevCount, count))
-  }
-
+  }, [])
+  
   return (
     <>
       <BasketBlock onClick={onClickHandler}>
@@ -33,4 +36,4 @@ const BasketButton = () => {
   )
 }
 
-export default BasketButton
+export default memo(BasketButton)
