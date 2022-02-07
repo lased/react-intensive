@@ -8,7 +8,7 @@ const Basket = ({ basket, onRemove, onUpdate }) => {
 
   return (
     <BasketBlock>
-      {!basket.length && <strong>Корзина пуста</strong>}
+      {basketDetail && !basket.length && <strong>Корзина пуста</strong>}
       {basketDetail ? (
         basket.map((product) => {
           const detail = basketDetail.find((productDetail) => productDetail.id === product.id)

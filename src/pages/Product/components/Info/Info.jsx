@@ -37,14 +37,14 @@ const Info = ({ product, onSave, onUpdate }) => {
   const onBasketClickHandler = () => {
     if (inBasket) {
       dispatch(BasketAction.removeItemAsync(product.id, inBasket.count))
-      product.inStock = inBasket.count + inBasket.inStock
+      onUpdate({ ...product, inStock: inBasket.count + inBasket.inStock })
     } else {
       dispatch(BasketAction.addItemAsync(product, 1))
     }
   }
 
   useEffect(() => {
-    if (inBasket) {
+    if (inBasket && product.inStock !== inBasket.inStock) {
       onUpdate({ ...product, inStock: inBasket.inStock })
     }
     if (!inBasket && prevInBasket.current) {
