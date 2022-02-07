@@ -18,24 +18,41 @@ const Product = () => {
   const auth = useSelector((store) => store.auth)
   const dispatch = useDispatch()
 
-  const inBasket = basket.find((basketProduct) => basketProduct.id === product.id)
+  const inBasket = (product) => basket.find((basketProduct) => basketProduct.id === product.id)
   const showUpdateForm = () => setInEditorMode(!inEditorMode)
   const onUpdateProduct = (recivedProduct) => {
     const updatableProduct = { ...product, ...recivedProduct }
 
     ProductService.update(product.id, updatableProduct).subscribe((updatedProduct) => {
       if (updatedProduct) {
+        const basketProductInfo = inBasket(product)
+
         setInEditorMode(!inEditorMode)
         setProduct(updatedProduct)
+
+        if (basketProductInfo) {
+          dispatch(
+            BasketAction.updateItemAsync(
+              {
+                ...basketProductInfo,
+                price: updatedProduct.price,
+                inStock: updatedProduct.inStock,
+              },
+              basketProductInfo.count,
+              basketProductInfo.count
+            )
+          )
+        }
       }
     })
   }
   const onBasketClickHandler = () => {
-    if (inBasket) {
-      product.inStock += inBasket.count
-      dispatch(BasketAction.removeItemAsync(product.id, inBasket.count))
+    const basketProductInfo = inBasket(product)
+
+    if (basketProductInfo) {
+      dispatch(BasketAction.removeItemAsync(product.id, basketProductInfo.count))
+      product.inStock += basketProductInfo.count
     } else {
-      product.inStock -= 1
       dispatch(BasketAction.addItemAsync(product, 1))
     }
   }
@@ -56,7 +73,7 @@ const Product = () => {
             <ProductInfo
               product={product}
               isAuth={auth.isAuth}
-              inBasket={inBasket}
+              inBasket={inBasket(product)}
               onBasketClick={onBasketClickHandler}
             />
           )}
@@ -69,12 +86,3 @@ const Product = () => {
 }
 
 export default Product
-// const onClickHandler = () => {
-//   if (inBasket) {
-//     product.inStock += inBasket.count
-//     dispatch(BasketAction.removeItemAsync(inBasket.id, inBasket.count))
-//   } else {
-//     product.inStock -= 1
-//     dispatch(BasketAction.addItemAsync(product, 1))
-//   }
-// }

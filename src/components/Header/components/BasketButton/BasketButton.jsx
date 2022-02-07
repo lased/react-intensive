@@ -15,13 +15,7 @@ const BasketButton = () => {
   const onCloseHandler = () => setShowModal(false)
   const onRemoveHandler = (id, count) => dispatch(BasketAction.removeItemAsync(id, count))
   const onUpdateHandler = (product, prevCount, count) => {
-    if (count) {
-      if (prevCount !== count) {
-        dispatch(BasketAction.updateItemAsync(product, prevCount, count))
-      }
-    } else {
-      onRemoveHandler(product.id)
-    }
+    dispatch(BasketAction.updateItemAsync(product, prevCount, count))
   }
 
   return (

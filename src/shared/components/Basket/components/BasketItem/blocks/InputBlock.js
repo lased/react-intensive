@@ -1,17 +1,10 @@
 import styled from 'styled-components'
 
 const InputBlock = styled.div({
-    width: '8%',
-
-    'input': {
-        '&[type=number]': {
-            appearance: 'textfield'
-        },
-        '&::-webkit-outer-spin-button, &::-webkit-inner-spin-button': {
-            appearance: 'none',
-            margin: 0
-        }
-    }
+    width: '15%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-around',
 })
 
 export default InputBlock

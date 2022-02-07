@@ -23,8 +23,8 @@ const loadAsync = () =>
 const addItemAsync = (product, count = 1) =>
     (dispatch) => BasketService
         .addProduct(product, count)
-        .subscribe(({ id, price }) => {
-            dispatch(addItem({ id, price, count }))
+        .subscribe(({ id, price, inStock }) => {
+            dispatch(addItem({ id, price, inStock, count }))
         })
 const removeItemAsync = (id, count) =>
     (dispatch) => BasketService
@@ -35,8 +35,8 @@ const removeItemAsync = (id, count) =>
 const updateItemAsync = (product, prevCount, count = 1) =>
     (dispatch) => BasketService
         .updateProduct(product, prevCount, count)
-        .subscribe(({ id, price }) => {
-            dispatch(updateItem({ id, price, count }))
+        .subscribe(({ id, price, inStock }) => {
+            dispatch(updateItem({ id, price, inStock, count }))
         })
 
 export {

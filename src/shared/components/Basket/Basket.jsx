@@ -17,7 +17,7 @@ const Basket = ({ basket, onRemove, onUpdate }) => {
             <BasketItem
               key={product.id}
               product={detail}
-              inBasketCount={product.count}
+              inBasket={product}
               onRemove={onRemove}
               onUpdate={onUpdate}
             />

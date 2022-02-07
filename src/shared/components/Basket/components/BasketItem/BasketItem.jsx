@@ -1,32 +1,11 @@
-import { useState } from 'react'
-
 import { BasketItemBlock, ImageBlock, PriceBlock, TitleBlock, InputBlock } from './blocks'
-import { Helper, Input } from '../../../../'
 import { ButtonBlock } from './blocks'
+import { Helper } from '../../../../'
+import { CountButton } from '../../..'
 
-const BasketItem = ({ product, inBasketCount, onRemove, onUpdate }) => {
-  const [count, setCount] = useState(inBasketCount)
-
-  const onChangeHandler = (event) => {
-    let { value } = event.target
-
-    setCount(value ? +value : value)
-  }
-  const onBlurHandler = (event) => {
-    let { value } = event.target
-
-    if (!value || isNaN(value)) {
-      return onRemove(product.id, inBasketCount)
-    }
-
-    value = Math.abs(value)
-
-    if (value > product.inStock + inBasketCount) {
-      value = product.inStock + inBasketCount
-    }
-
-    setCount(value)
-    onUpdate(product, inBasketCount, value)
+const BasketItem = ({ product, inBasket, onRemove, onUpdate }) => {
+  const changeCount = (value) => {
+    onUpdate(inBasket, inBasket.count, value)
   }
 
   return (
@@ -35,15 +14,14 @@ const BasketItem = ({ product, inBasketCount, onRemove, onUpdate }) => {
       <TitleBlock>{product.title}</TitleBlock>
       <PriceBlock>{Helper.getCurrency(product.price)}</PriceBlock>
       <InputBlock>
-        <Input
-          name='count'
-          type='number'
-          value={count}
-          onBlur={onBlurHandler}
-          onChange={onChangeHandler}
+        <CountButton
+          current={inBasket.count}
+          min={1}
+          max={inBasket.count + inBasket.inStock}
+          onUpdate={changeCount}
         />
       </InputBlock>
-      <ButtonBlock error onClick={() => onRemove(product.id, inBasketCount)}>
+      <ButtonBlock error onClick={() => onRemove(product.id, inBasket.count)}>
         X
       </ButtonBlock>
     </BasketItemBlock>

@@ -23,10 +23,12 @@ class Basket {
     }
 
     static addProduct({ id, price, inStock }, count) {
-        return from(axios.post(`${API}/basket`, { id, count, price }))
+        const stockChange = inStock - count
+
+        return from(axios.post(`${API}/basket`, { id, count, price, inStock: stockChange }))
             .pipe(
                 map(({ data }) => data),
-                switchMap(() => Product.update(id, { inStock: inStock - count }))
+                switchMap(() => Product.update(id, { inStock: stockChange }))
             )
     }
 
@@ -40,10 +42,13 @@ class Basket {
     }
 
     static updateProduct({ id, price, inStock }, prevCount, count) {
-        return from(axios.patch(`${API}/basket/${id}`, { price, count }))
+        const stockChange = inStock + prevCount - count
+
+        return from(axios.patch(`${API}/basket/${id}`, { price, count, inStock: stockChange }))
             .pipe(
                 map(({ data }) => data),
-                switchMap(() => Product.update(id, { inStock: inStock + prevCount - count }))
+
+                switchMap(() => Product.update(id, { inStock: stockChange }))
             )
     }
 }
