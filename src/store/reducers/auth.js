@@ -1,24 +1,23 @@
 import { LocalStorageService } from '../../services'
-import { USER_KEY } from '../../config'
 import { AuthActionType } from '../types'
+import { USER_KEY } from '../../config'
 
 const userInfo = LocalStorageService.getItem(USER_KEY)
-const initialState = { isAuth: !!userInfo, user: userInfo }
+const initialState = { ...(userInfo || {}), isAuth: !!userInfo }
 
-const authReducer = (currentState = initialState, { type, user }) => {
+const authReducer = (state = initialState, { type, payload }) => {
     switch (type) {
         case AuthActionType.LOGIN:
             return {
-                isAuth: true,
-                user
+                ...payload,
+                isAuth: true
             }
         case AuthActionType.LOGOUT:
             return {
-                isAuth: false,
-                user: null
+                isAuth: false
             }
         default:
-            return { ...currentState }
+            return { ...state }
     }
 }
 

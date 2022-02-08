@@ -10,9 +10,9 @@ import {
 } from './blocks'
 import { Helper, CountButton } from '../../../../'
 
-const BasketItem = ({ product, inBasket, onRemove, onUpdate }) => {
+const BasketItem = ({ product, inBasketProduct, onRemove, onUpdate }) => {
   const changeCount = (value) => {
-    onUpdate(inBasket, inBasket.count, value)
+    onUpdate(inBasketProduct, value)
   }
 
   return (
@@ -22,13 +22,13 @@ const BasketItem = ({ product, inBasket, onRemove, onUpdate }) => {
       <PriceBlock>{Helper.getCurrency(product.price)}</PriceBlock>
       <InputBlock>
         <CountButton
-          current={inBasket.count}
+          current={inBasketProduct.count}
           min={1}
-          max={inBasket.count + inBasket.inStock}
+          max={inBasketProduct.count + inBasketProduct.inStock}
           onUpdate={changeCount}
         />
       </InputBlock>
-      <ButtonBlock error onClick={() => onRemove(product.id, inBasket.count)}>
+      <ButtonBlock error onClick={() => onRemove(inBasketProduct)}>
         X
       </ButtonBlock>
     </BasketItemBlock>

@@ -1,43 +1,55 @@
 import { BasketService } from '../../services'
 import { BasketActionType } from '../'
 
+const convertToBasketProduct = ({ id, inStock, price }) => ({
+    id, inStock, price, count: 1
+})
+
 const load = (products) => ({
-    type: BasketActionType.LOAD, loadProducts: products
+    type: BasketActionType.LOAD, payload: products
 })
 const addItem = (product) => ({
-    type: BasketActionType.ADD, product
+    type: BasketActionType.ADD, payload: product
 })
-const removeItem = (id) => ({
-    type: BasketActionType.REMOVE, id
+const removeItem = (product) => ({
+    type: BasketActionType.REMOVE, payload: product
 })
 const updateItem = (product) => ({
-    type: BasketActionType.UPDATE, product
+    type: BasketActionType.UPDATE, payload: product
 })
 
 const loadAsync = () =>
-    (dispatch) => BasketService
-        .getProducts()
-        .subscribe((products) => {
-            dispatch(load(products))
-        })
-const addItemAsync = (product, count = 1) =>
-    (dispatch) => BasketService
-        .addProduct(product, count)
-        .subscribe(({ id, price, inStock }) => {
-            dispatch(addItem({ id, price, inStock, count }))
-        })
-const removeItemAsync = (id, count) =>
-    (dispatch) => BasketService
-        .removeProduct(id, count)
-        .subscribe(() => {
-            dispatch(removeItem(id))
-        })
-const updateItemAsync = (product, prevCount, count = 1) =>
-    (dispatch) => BasketService
-        .updateProduct(product, prevCount, count)
-        .subscribe(({ id, price, inStock }) => {
-            dispatch(updateItem({ id, price, inStock, count }))
-        })
+    (dispatch) => {
+        BasketService
+            .getProducts()
+            .subscribe((products) => {
+                dispatch(load(products))
+            })
+    }
+const addItemAsync = (product, count) =>
+    (dispatch) => {
+        BasketService
+            .add({ ...convertToBasketProduct(product), count })
+            .subscribe((addedProduct) => {
+                dispatch(addItem(addedProduct))
+            })
+    }
+const removeItemAsync = (product) =>
+    (dispatch) => {
+        BasketService
+            .remove(product)
+            .subscribe(() => {
+                dispatch(removeItem(product))
+            })
+    }
+const updateItemAsync = (product, count) =>
+    (dispatch) => {
+        BasketService
+            .update(product, count)
+            .subscribe((updatedProduct) => {
+                dispatch(updateItem(updatedProduct))
+            })
+    }
 
 export {
     loadAsync,

@@ -10,8 +10,8 @@ const Info = ({ product, onSave, onUpdate }) => {
   const [inEditorMode, setInEditorMode] = useState(false)
   const basket = useSelector((store) => store.basket, shallowEqual)
   const auth = useSelector((store) => store.auth, shallowEqual)
-  const inBasket = basket.find((basketProduct) => basketProduct.id === product.id)
-  const prevInBasket = useRef()
+  const inBasketProduct = basket.find((basketProduct) => basketProduct.id === product.id)
+  const prevInBasketProduct = useRef()
   const dispatch = useDispatch()
 
   const showUpdateForm = () => setInEditorMode(!inEditorMode)
@@ -19,47 +19,46 @@ const Info = ({ product, onSave, onUpdate }) => {
     setInEditorMode((prevInEditorMode) => !prevInEditorMode)
     onSave({ ...product, ...recivedProduct })
 
-    if (inBasket) {
-      onUpdate({ ...product, inStock: inBasket.count + inBasket.inStock })
+    if (inBasketProduct) {
+      onUpdate({ ...product, inStock: inBasketProduct.count + inBasketProduct.inStock })
       dispatch(
         BasketAction.updateItemAsync(
           {
-            ...inBasket,
+            ...inBasketProduct,
             price: recivedProduct.price,
             inStock: recivedProduct.inStock,
           },
-          inBasket.count,
-          inBasket.count
+          inBasketProduct.count
         )
       )
     }
   }
   const onBasketClickHandler = () => {
-    if (inBasket) {
-      dispatch(BasketAction.removeItemAsync(product.id, inBasket.count))
-      onUpdate({ ...product, inStock: inBasket.count + inBasket.inStock })
+    if (inBasketProduct) {
+      dispatch(BasketAction.removeItemAsync(inBasketProduct))
+      onUpdate({ ...product, inStock: inBasketProduct.count + inBasketProduct.inStock })
     } else {
       dispatch(BasketAction.addItemAsync(product, 1))
     }
   }
 
   useEffect(() => {
-    if (inBasket && product.inStock !== inBasket.inStock) {
-      onUpdate({ ...product, inStock: inBasket.inStock })
+    if (inBasketProduct && product.inStock !== inBasketProduct.inStock) {
+      onUpdate({ ...product, inStock: inBasketProduct.inStock })
     }
-    if (!inBasket && prevInBasket.current) {
+    if (!inBasketProduct && prevInBasketProduct.current) {
       onUpdate({
         ...product,
-        inStock: prevInBasket.current.inStock + prevInBasket.current.count,
+        inStock: prevInBasketProduct.current.inStock + prevInBasketProduct.current.count,
       })
     }
 
-    prevInBasket.current = inBasket
+    prevInBasketProduct.current = inBasketProduct
   }, [basket])
 
   return (
     <>
-      {auth.isAuth && auth.user && auth.user.role === 'admin' && (
+      {auth.isAuth && auth.role === 'admin' && (
         <Button secondary={!inEditorMode} error={inEditorMode} onClick={showUpdateForm}>
           {inEditorMode ? 'Отмена' : 'Редактировать'}
         </Button>
@@ -71,7 +70,7 @@ const Info = ({ product, onSave, onUpdate }) => {
         <ProductInfo
           product={product}
           isAuth={auth.isAuth}
-          inBasket={inBasket}
+          inBasketProduct={inBasketProduct}
           onBasketClick={onBasketClickHandler}
         />
       )}

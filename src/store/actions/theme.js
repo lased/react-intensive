@@ -1,7 +1,7 @@
 import { ThemeActionType } from '../'
 
 const toggle = (theme) => ({
-    type: ThemeActionType.TOGGLE, theme
+    type: ThemeActionType.TOGGLE, payload: theme
 })
 
 export {

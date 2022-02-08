@@ -5,50 +5,54 @@ import { API } from '../config'
 import Product from './Product'
 
 class Basket {
-    static getProduct(id) {
-        return from(axios.get(`${API}/basket/${id}`)).pipe(
+    static getProducts() {
+        return from(axios.get(`${API}/basket`)).pipe(
             map(({ data }) => data)
         )
     }
 
-    static getProducts(more = false) {
+    static getDetailProducts() {
         return from(axios.get(`${API}/basket`)).pipe(
             map(({ data }) => data),
             switchMap(
-                (products) => products.length && more
+                (products) => products.length
                     ? Product.getAll({ id: products.map((product) => product.id) })
                     : of(products)
             )
         )
     }
 
-    static addProduct({ id, price, inStock }, count) {
-        const stockChange = inStock - count
+    static add(product) {
+        const inStockDiff = product.inStock - product.count
 
-        return from(axios.post(`${API}/basket`, { id, count, price, inStock: stockChange }))
+        return from(axios.post(`${API}/basket`, { ...product, inStock: inStockDiff }))
             .pipe(
                 map(({ data }) => data),
-                switchMap(() => Product.update(id, { inStock: stockChange }))
+                switchMap(() => Product.update(product.id, { inStock: inStockDiff })),
+                map(() => ({ ...product, inStock: inStockDiff }))
             )
     }
 
-    static removeProduct(id, count) {
-        return from(axios.delete(`${API}/basket/${id}`))
+    static remove(product) {
+        return from(axios.delete(`${API}/basket/${product.id}`))
             .pipe(
                 map(({ data }) => data),
-                switchMap(() => Product.getById(id)),
-                switchMap((product) => Product.update(id, { inStock: product.inStock + count }))
+                switchMap(() => Product.update(product.id, {
+                    inStock: product.inStock + product.count
+                }))
             )
     }
 
-    static updateProduct({ id, price, inStock }, prevCount, count) {
-        const stockChange = inStock + prevCount - count
+    static update(product, count) {
+        const inStockDiff = product.inStock + product.count - count
 
-        return from(axios.patch(`${API}/basket/${id}`, { price, count, inStock: stockChange }))
+        return from(axios.patch(`${API}/basket/${product.id}`, {
+            ...product, count, inStock: inStockDiff
+        }))
             .pipe(
                 map(({ data }) => data),
-
-                switchMap(() => Product.update(id, { inStock: stockChange }))
+                switchMap(() => Product.update(product.id, { inStock: inStockDiff })),
+                map(() => ({ ...product, count, inStock: inStockDiff }))
             )
     }
 }

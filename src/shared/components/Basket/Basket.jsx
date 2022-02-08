@@ -4,20 +4,22 @@ import { BasketItem } from './components'
 import { BasketBlock } from './blocks'
 
 const Basket = ({ basket, onRemove, onUpdate }) => {
-  const [basketDetail] = useObservable(BasketService.getProducts, null, true)
+  const [basketDetailProducts] = useObservable(BasketService.getDetailProducts)
 
   return (
     <BasketBlock>
-      {basketDetail && !basket.length && <strong>Корзина пуста</strong>}
-      {basketDetail ? (
-        basket.map((product) => {
-          const detail = basketDetail.find((productDetail) => productDetail.id === product.id)
+      {basketDetailProducts && !basket.length && <strong>Корзина пуста</strong>}
+      {basketDetailProducts ? (
+        basket.map((inBasketProduct) => {
+          const detailProduct = basketDetailProducts.find(
+            (productDetail) => productDetail.id === inBasketProduct.id
+          )
 
           return (
             <BasketItem
-              key={product.id}
-              product={detail}
-              inBasket={product}
+              key={inBasketProduct.id}
+              product={detailProduct}
+              inBasketProduct={inBasketProduct}
               onRemove={onRemove}
               onUpdate={onUpdate}
             />

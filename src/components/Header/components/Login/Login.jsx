@@ -2,9 +2,7 @@ import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { memo, useState } from 'react'
 
 import { Modal, AuthForm } from '../../../../shared'
-import { LocalStorageService } from '../../../../services'
 import { AuthAction } from '../../../../store'
-import { USER_KEY } from '../../../../config'
 import { LoginBlock } from './blocks'
 
 const getText = (isAuth) => (isAuth ? 'Выйти' : 'Войти')
@@ -16,13 +14,11 @@ const Login = () => {
 
   const onCloseHandler = () => setShowModal(false)
   const onSubmitHandler = (user) => {
-    LocalStorageService.setItem(USER_KEY, user)
     dispatch(AuthAction.login(user))
     onCloseHandler()
   }
   const onClickHandler = () => {
     if (auth.isAuth) {
-      LocalStorageService.removeItem(USER_KEY)
       dispatch(AuthAction.logout())
     } else {
       setShowModal(true)

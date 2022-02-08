@@ -1,19 +1,14 @@
 import { ThemeActionType } from '../types'
 
-const initialTheme = 'dark'
+const initialState = 'dark'
 
-const themeReducer = (currentTheme = initialTheme, { type, theme }) => {
-    let newTheme
-
+const themeReducer = (state = initialState, { type, payload }) => {
     switch (type) {
         case ThemeActionType.TOGGLE:
-            newTheme = theme
-            break
+            return payload
         default:
-            newTheme = currentTheme
+            return state
     }
-
-    return newTheme
 }
 
 export default themeReducer

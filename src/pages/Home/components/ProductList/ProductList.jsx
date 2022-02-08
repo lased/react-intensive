@@ -1,5 +1,5 @@
 import { shallowEqual, useSelector, useDispatch } from 'react-redux'
-import { memo, useCallback } from 'react'
+import { memo, useCallback, useRef, useEffect } from 'react'
 
 import { useObservable } from '../../../../hooks'
 import { ProductService } from '../../../../services'
@@ -10,31 +10,49 @@ import { BasketAction } from '../../../../store'
 const ProductList = () => {
   const basket = useSelector((store) => store.basket, shallowEqual)
   const auth = useSelector((store) => store.auth, shallowEqual)
-  const [products] = useObservable(ProductService.getAll)
+  const [products, setProducts] = useObservable(ProductService.getAll)
+  const prevBasket = useRef(basket)
   const dispatch = useDispatch()
 
-  const onClickHandler = useCallback((product, count) => {
-    if (count) {
-      product.inStock += count
-      dispatch(BasketAction.removeItemAsync(product.id, count))
+  const onClickHandler = useCallback((product, count, inBasketProduct) => {
+    if (inBasketProduct) {
+      dispatch(BasketAction.removeItemAsync(inBasketProduct))
     } else {
-      dispatch(BasketAction.addItemAsync(product, 1))
+      dispatch(BasketAction.addItemAsync(product, count))
     }
   }, [])
+
+  useEffect(() => {
+    if (basket.length < prevBasket.current.length) {
+      const removedProduct = prevBasket.current.filter(
+        (prevProduct) => !basket.some((product) => product.id === prevProduct.id)
+      )[0]
+
+      if (removedProduct) {
+        setProducts(
+          products.map((product) =>
+            product.id !== removedProduct.id
+              ? product
+              : { ...product, inStock: removedProduct.inStock + removedProduct.count }
+          )
+        )
+      }
+    }
+
+    prevBasket.current = basket
+  }, [basket])
 
   return (
     <ProductListBlock>
       {products ? (
         products.map((product) => {
-          const basketProductInfo = basket.find(
-            (currentProduct) => currentProduct.id === product.id
-          )
+          const inBasketProduct = basket.find((currentProduct) => currentProduct.id === product.id)
 
           return (
             <ProductCard
               key={product.id}
               product={product}
-              inBasket={basketProductInfo || null}
+              inBasketProduct={inBasketProduct || null}
               isAuth={auth.isAuth}
               onClick={onClickHandler}
             />

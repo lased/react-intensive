@@ -1,32 +1,24 @@
 import { BasketActionType } from '../types'
 
-const initialBasket = []
+const initialState = []
 
-const basketReducer = (products = initialBasket, { type, id, product, loadProducts }) => {
-    let newProducts
-
+const basketReducer = (state = initialState, { type, payload }) => {
     switch (type) {
         case BasketActionType.LOAD:
-            newProducts = [...loadProducts]
-            break
+            return [...payload]
         case BasketActionType.ADD:
-            newProducts = [...products, product]
-            break
+            return [...state, payload]
         case BasketActionType.REMOVE:
-            newProducts = products.filter((currentProduct) => currentProduct.id !== id)
-            break
+            return state.filter((currentProduct) => currentProduct.id !== payload.id)
         case BasketActionType.UPDATE:
-            newProducts = products.map(
-                (currentProduct) => currentProduct.id === product.id
-                    ? { ...currentProduct, ...product }
+            return state.map(
+                (currentProduct) => currentProduct.id === payload.id
+                    ? { ...currentProduct, ...payload }
                     : currentProduct
             )
-            break
         default:
-            newProducts = [...products]
+            return state
     }
-
-    return newProducts
 }
 
 export default basketReducer

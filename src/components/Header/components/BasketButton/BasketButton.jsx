@@ -14,13 +14,13 @@ const BasketButton = () => {
   const onClickHandler = () => setShowModal(true)
   const onCloseHandler = () => setShowModal(false)
   const onRemoveHandler = useCallback(
-    (id, count) => dispatch(BasketAction.removeItemAsync(id, count)),
+    (inBasketProduct) => dispatch(BasketAction.removeItemAsync(inBasketProduct)),
     []
   )
-  const onUpdateHandler = useCallback((product, prevCount, count) => {
-    dispatch(BasketAction.updateItemAsync(product, prevCount, count))
+  const onUpdateHandler = useCallback((inBasketProduct, count) => {
+    dispatch(BasketAction.updateItemAsync(inBasketProduct, count))
   }, [])
-  
+
   return (
     <>
       <BasketBlock onClick={onClickHandler}>
