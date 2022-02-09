@@ -1,3 +1,6 @@
-interface Todo {}
+interface ITodo {
+  id?: number
+  text: string
+}
 
-export type {}
+export type { ITodo }

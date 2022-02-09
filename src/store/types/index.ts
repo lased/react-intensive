@@ -1,1 +1,1 @@
-export * as TodosActionType from './todos'
+export { default as ETodoActionType } from './todo'

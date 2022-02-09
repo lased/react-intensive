@@ -6,7 +6,7 @@ interface ITextareaProps {
   limit?: number
   error?: string
   label?: string
-  onChange: (event: ChangeEvent) => void
+  onChange: (event: ChangeEvent<HTMLTextAreaElement>) => void
 }
 
 export type { ITextareaProps }

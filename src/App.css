@@ -1,4 +1,13 @@
 .App {
   min-height: 100vh;
   background-color: var(--background-color-10);
+  padding: 20px;
+}
+
+.Container {
+  max-width: 1240px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
