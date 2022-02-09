@@ -1,0 +1,35 @@
+.Button {
+  padding: 10;
+  border-radius: 5;
+  outline: none;
+  border: none;
+  color: #000;
+  background-color: #fff;
+}
+
+.Button:hover {
+  cursor: pointer;
+  opacity: 0.85;
+}
+
+.Button:disabled {
+  opacity: 0.7;
+}
+
+.Button-primary,
+.Button-secondary,
+.Button-error {
+  color: #fff;
+}
+
+.Button-primary {
+  background-color: #334155;
+}
+
+.Button-secondary {
+  background-color: #15803d;
+}
+
+.Button-error {
+  background-color: #d32f2f;
+}

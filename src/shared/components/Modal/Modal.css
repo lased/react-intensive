@@ -1,0 +1,56 @@
+.Modal-container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.Modal-block {
+  max-width: 400px;
+  padding: 10px;
+  border-radius: 5px;
+  flex-grow: 1;
+  background-color: var(--background-color-30);
+  color: var(--text-color-10);
+  position: relative;
+}
+
+.Modal-close-btn {
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 15px;
+  line-height: 5px;
+  position: absolute;
+  right: -15px;
+  top: -15px;
+}
+
+.Modal-content {
+  max-height: auto;
+  width: 100%;
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.3) rgba(0, 0, 0, 0.2);
+}
+
+.Modal-content::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.Modal-content::-webkit-scrollbar-track {
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.Modal-content::-webkit-scrollbar-thumb {
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.3);
+}

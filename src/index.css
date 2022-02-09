@@ -1,0 +1,15 @@
+@import './themes/dark.css';
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.Container {
+  max-width: 1240px;
+  margin: auto;
+}
