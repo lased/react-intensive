@@ -6,7 +6,8 @@ const HeaderBlock = styled.header({
     position: 'fixed',
     top: 0,
     left: 0,
-    right: 0
+    right: 0,
+    zIndex: 9998
 })
 
 export default HeaderBlock

@@ -1,37 +1,22 @@
-import { useContext, useState } from 'react';
+import { useSelector, shallowEqual } from 'react-redux'
+import { memo } from 'react'
 
-import { ContainerBlock, HeaderBlock, ToggleButtonBlock } from './blocks';
-import { ThemeContext } from '../../context'
-import { Button, ConfirmModal } from '..'
+import { Nav, BasketButton, Login, ToggleTheme } from './components'
+import { ContainerBlock, HeaderBlock } from './blocks'
 
-const getThemeText = (theme) => theme === 'dark' ? 'Светлая' : 'Темная'
-const getStyleButton = (theme) => theme === 'dark' ? {} : { primary: true }
-
-const Header = (props) => {
-  const { theme, toggleTheme } = useContext(ThemeContext)
-  const [showModal, setShowModal] = useState(false)
-
-  const showConfirmModal = () => setShowModal(true)
-  const onResetFormHandler = (confirmed) => {
-    if (confirmed) { props.onResetForm() }
-
-    setShowModal(false)
-  }
+const Header = () => {
+  const auth = useSelector((store) => store.auth, shallowEqual)
 
   return (
     <HeaderBlock>
       <ContainerBlock>
-        {props.showReset && <Button error onClick={showConfirmModal}>Сбросить форму</Button>}
-        <ToggleButtonBlock
-          {...getStyleButton(theme)}
-          onClick={toggleTheme}
-        >
-          {getThemeText(theme)}
-        </ToggleButtonBlock>
-        {showModal && <ConfirmModal onConfirm={onResetFormHandler} />}
+        <Nav />
+        <Login />
+        {auth.isAuth && <BasketButton />}
+        <ToggleTheme />
       </ContainerBlock>
     </HeaderBlock>
   )
 }
 
-export default Header
+export default memo(Header)

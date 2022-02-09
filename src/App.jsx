@@ -1,44 +1,43 @@
-import { useEffect, useRef, useState } from 'react'
+import { Redirect, Route, Switch } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import { useRef, useEffect } from 'react'
 
-import { Form, Card, Header } from './components'
+import { About, Home, Product } from './pages'
+import { ContainerBlock } from './shared'
+import { BasketAction } from './store'
+import { Header } from './components'
 import { AppBlock } from './blocks'
-import { ThemeContext } from './context'
 
 const App = () => {
-  const formRef = useRef()
-  const prevThemeRef = useRef()
-
-  const [data, setData] = useState(null)
-  const [theme, setTheme] = useState('dark')
-
-  const onSubmitHandler = (recivedData) => setData(recivedData)
-  const toggleTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark')
-  const onResetFormHandler = () => formRef.current.reset()
+  const theme = useSelector((store) => store.theme)
+  const prevTheme = useRef(theme)
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    document.body.classList.remove(prevThemeRef.current)
+    dispatch(BasketAction.loadAsync())
+  }, [])
+  useEffect(() => {
+    document.body.classList.remove(prevTheme.current)
     document.body.classList.add(theme)
-    prevThemeRef.current = theme
+    prevTheme.current = theme
   }, [theme])
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      <Header
-        {...(!data ? { showReset: true } : {})}
-        onResetForm={onResetFormHandler}
-      />
+    <>
+      <Header />
       <AppBlock>
-        {
-          data
-            ? <Card header='Анкета' data={data} />
-            : <Form
-              ref={formRef}
-              header='Создание анкеты'
-              onSubmit={onSubmitHandler}
-            />
-        }
+        <ContainerBlock>
+          <Switch>
+            <Route path='/' component={Home} exact />
+            <Route path='/about' component={About} />
+            <Route path='/product/:id' component={Product} />
+            <Route path='*'>
+              <Redirect to='/' />
+            </Route>
+          </Switch>
+        </ContainerBlock>
       </AppBlock>
-    </ThemeContext.Provider>
+    </>
   )
 }
 

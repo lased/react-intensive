@@ -5,7 +5,7 @@ class Validator {
 
   validate(value, rules) {
     for (const rule of rules) {
-      if (rule === 'required' && !value) {
+      if (rule === 'required' && value === '') {
         this.message = 'Поле пустое. Заполните пожалуйста'
       } else if (
         rule === 'firstCharInUpperСase' &&
