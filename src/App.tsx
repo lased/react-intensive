@@ -1,4 +1,4 @@
-import { InputForm } from './components'
+import { InputForm, TodoList } from './components'
 
 import './App.css'
 
@@ -7,6 +7,7 @@ const App = () => {
     <div className='App'>
       <div className='Container'>
         <InputForm />
+        <TodoList />
       </div>
     </div>
   )

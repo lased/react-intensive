@@ -1,0 +1,23 @@
+.TodoItem {
+  background-color: var(--background-color-30);
+  color: var(--text-color-10);
+  padding: 10px;
+  border-radius: 5px;
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.TodoItem-options {
+  background-color: transparent;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  padding: 5px;
+}
+
+.TodoItem-options:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}

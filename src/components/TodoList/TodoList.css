@@ -1,0 +1,11 @@
+.TodoList {
+  margin-top: 20px;
+}
+
+.TodoList > strong {
+  background-color: var(--background-color-30);
+  color: var(--text-color-10);
+  padding: 10px;
+  border-radius: 5px;
+  display: block;
+}

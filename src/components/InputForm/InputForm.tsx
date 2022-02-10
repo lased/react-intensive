@@ -1,13 +1,13 @@
 import { ChangeEvent, FormEvent } from 'react'
+import { useDispatch } from 'react-redux'
 
-import { Button, Textarea } from '../../shared'
-import { TUseFormRules } from '../../hooks/useForm.types'
-import { useForm } from '../../hooks'
+import { TUseFormRules, useForm } from 'hooks'
+import { Button, Textarea } from 'shared'
+import { TodosAction } from 'store'
+import { createIcon } from 'icons'
+import { ITodo } from 'models'
 
 import './InputForm.css'
-import { useDispatch } from 'react-redux'
-import { createAsync } from '../../store/actions/todo'
-import { ITodo } from '../../models'
 
 const values = { text: '' }
 const rules: TUseFormRules = { text: ['required', { maxLength: 160 }] }
@@ -32,7 +32,7 @@ const InputForm = () => {
       }
 
       clear()
-      dispatch(createAsync(newTodo))
+      dispatch(TodosAction.createAsync(newTodo))
     }
   }
 
@@ -45,7 +45,9 @@ const InputForm = () => {
         name='text'
         onChange={onChangeHandler}
       />
-      <Button secondary>ОК</Button>
+      <Button secondary>
+        <img src={createIcon} alt='OK' />
+      </Button>
     </form>
   )
 }

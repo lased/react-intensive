@@ -7,7 +7,7 @@ interface IButtonProps {
   primary: boolean
   error: boolean
   children: ReactNode
-  onClick: (event: MouseEvent) => void
+  onClick: (event: MouseEvent<HTMLButtonElement>) => void
 }
 
 export type { IButtonProps }
