@@ -42,7 +42,7 @@ const TodoItem: FC<ITodoItemProps> = ({ todo }) => {
   const showConfirmModal = () => {
     toggleShowConfirmHandler()
   }
-  
+
   return (
     <div className={className}>
       {isEdit ? (

@@ -8,7 +8,7 @@
   margin-top: 5px;
 }
 
-.Todo strong {
+.Todo > strong {
   background-color: var(--background-color-30);
   color: var(--text-color-10);
   padding: 10px;

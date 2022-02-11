@@ -34,12 +34,9 @@ const TodoList = () => {
     <div className='Todo'>
       {todos.list && !!todos.list.length && <Filter />}
       {filtredTodos && !filtredTodos.length && <strong>Список задач пуст</strong>}
+      {!filtredTodos && <strong>Загрузка...</strong>}
       <div className='TodoList'>
-        {filtredTodos ? (
-          filtredTodos.map((todo) => <TodoItem key={todo.id} todo={todo} />)
-        ) : (
-          <strong>Загрузка...</strong>
-        )}
+        {filtredTodos && filtredTodos.map((todo) => <TodoItem key={todo.id} todo={todo} />)}
       </div>
     </div>
   )

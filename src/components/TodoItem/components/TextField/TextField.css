@@ -2,3 +2,8 @@
   width: 100%;
   margin: 0;
 }
+
+.TextField > textarea {
+  border: 2px solid var(--text-color-30);
+  resize: none;
+}

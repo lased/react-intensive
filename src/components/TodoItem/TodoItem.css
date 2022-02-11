@@ -28,6 +28,9 @@
 }
 
 .TodoItem-success {
-  text-decoration: line-through;
   background-color: #d32f2f;
+}
+
+.TodoItem-success > .TodoItem-text {
+  text-decoration: line-through;
 }
