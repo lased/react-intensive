@@ -20,6 +20,7 @@
 
 .TodoItem > img {
   width: 30px;
+  cursor: pointer;
 }
 
 .TodoItem-text {

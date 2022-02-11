@@ -49,7 +49,7 @@ const TodoItem: FC<ITodoItemProps> = ({ todo }) => {
         <TextField value={todo.text} onEnter={onEditHandler} />
       ) : (
         <>
-          {todo.bookmark && <img src={starIcon} alt='star' />}
+          {todo.bookmark && <img src={starIcon} alt='star' onClick={onBookmarkHandler} />}
           <div className='TodoItem-text'>{todo.text}</div>
         </>
       )}
