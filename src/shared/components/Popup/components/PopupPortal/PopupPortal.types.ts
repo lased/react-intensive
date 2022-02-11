@@ -2,9 +2,7 @@ import { ReactNode } from 'react'
 
 interface IPopupPortalProps {
   content: ReactNode
-  coords: DOMRect
-  container?: HTMLElement
-  onBlur?: (event: FocusEvent) => void
+  rect: DOMRect | null
 }
 
 export type { IPopupPortalProps }

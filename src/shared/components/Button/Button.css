@@ -18,12 +18,13 @@
 
 .Button-primary,
 .Button-secondary,
-.Button-error {
+.Button-error,
+.Button-warning {
   color: #fff;
 }
 
 .Button-primary {
-  background-color: #334155;
+  background-color: #1d3960;
 }
 
 .Button-secondary {
@@ -32,4 +33,8 @@
 
 .Button-error {
   background-color: #d32f2f;
+}
+
+.Button-warning {
+  background-color: rgb(245, 158, 11);
 }

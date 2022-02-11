@@ -29,6 +29,8 @@ const InputForm = () => {
     if (formIsValid) {
       const newTodo: ITodo = {
         text: fields.text,
+        bookmark: false,
+        success: false,
       }
 
       clear()

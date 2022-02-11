@@ -5,9 +5,13 @@ import { Button } from '../Button'
 
 import './Modal.css'
 
-const Modal: FC<Partial<IModalProps>> = ({ children, maxWidth, maxHeight, onClose }) => {
+const Modal: FC<Partial<IModalProps>> = ({ isOpen, children, maxWidth, maxHeight, onClose }) => {
   const maxWidthStyle = { ...(maxWidth && { maxWidth }) }
   const maxHeightStyle = { ...(maxHeight && { maxHeight }) }
+
+  if (!isOpen) {
+    return null
+  }
 
   return (
     <div className='Modal-container'>

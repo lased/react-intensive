@@ -1,36 +1,16 @@
 {
   "todos": [
     {
-      "text": "впа",
-      "id": 1
-    },
-    {
-      "text": "вап",
+      "text": "wdfgdfgdfg",
+      "bookmark": true,
+      "success": false,
       "id": 2
     },
     {
-      "text": "вап",
+      "text": "dfgdhgdfhgdfghdfgh",
+      "bookmark": true,
+      "success": true,
       "id": 3
-    },
-    {
-      "text": "вап",
-      "id": 4
-    },
-    {
-      "text": "вап",
-      "id": 5
-    },
-    {
-      "text": "вап",
-      "id": 6
-    },
-    {
-      "text": "вап",
-      "id": 7
-    },
-    {
-      "text": "hg",
-      "id": 8
     }
   ]
 }

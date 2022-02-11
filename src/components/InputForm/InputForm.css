@@ -10,6 +10,11 @@
   flex-grow: 1;
 }
 
+.InputForm > .Textarea > .Textarea-field {
+  height: 100px;
+  resize: none;
+}
+
 .InputForm > .Button {
   margin: 0 0 0 5px;
   width: 70px;

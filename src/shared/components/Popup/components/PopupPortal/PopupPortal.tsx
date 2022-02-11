@@ -1,26 +1,26 @@
+import { CSSProperties, forwardRef } from 'react'
 import { createPortal } from 'react-dom'
-import { FC, useEffect } from 'react'
 
 import { IPopupPortalProps } from './PopupPortal.types'
 
-const PopupPortal: FC<IPopupPortalProps> = ({ coords, content, onBlur }) => {
-  const container = document.createElement('div')
+import './PopupPortal.css'
 
-  useEffect(() => {
-    container.style.position = 'fixed'
-    container.style.top = `${coords.y}px`
-    container.style.left = `${coords.x + coords.width}px`
-    container.tabIndex = -1
-    container.onblur = onBlur || null
-    document.body.append(container)
-    container.focus()
+const PopupPortal = forwardRef<HTMLDivElement, IPopupPortalProps>(({ rect, content }, ref) => {
+  if (!rect) {
+    return null
+  }
 
-    return () => {
-      container.remove()
-    }
-  }, [content])
+  const styles: CSSProperties = {
+    top: `${rect.y}px`,
+    left: `${rect.x + rect.width}px`,
+  }
 
-  return createPortal(content, container)
-}
+  return createPortal(
+    <div className='PopupPortal' ref={ref} style={styles}>
+      {content}
+    </div>,
+    document.body
+  )
+})
 
 export default PopupPortal

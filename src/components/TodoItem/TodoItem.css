@@ -6,7 +6,6 @@
   margin: 10px 0;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   position: relative;
 }
 
@@ -20,4 +19,23 @@
 
 .TodoItem-options:hover {
   background-color: rgba(255, 255, 255, 0.1);
+}
+
+.TodoItem > img {
+  width: 30px;
+}
+
+.TodoItem-text {
+  margin: 0 auto 0 10px;
+}
+
+.TodoItem-success::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 45px;
+  height: 2px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: red;
 }

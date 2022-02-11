@@ -1,12 +1,23 @@
-import { FC, memo } from 'react'
+import { FC, memo, useRef, KeyboardEvent } from 'react'
 
 import { ITextareaProps } from './Textarea.types'
 
 import './Textarea.css'
 
-const Textarea: FC<ITextareaProps> = ({ limit, value, name, error, label, onChange }) => {
+const Textarea: FC<ITextareaProps> = ({
+  className,
+  limit,
+  value,
+  name,
+  error,
+  label,
+  onChange,
+  onEnter,
+}) => {
+  const ref = useRef<HTMLTextAreaElement>(null)
   const id = `Textarea-${name}-id`
   const charsLeft = limit ? limit - value.length : 0
+  const classes = ['Textarea', ...(className ? [className] : [])].join(' ')
   const limitText =
     charsLeft < 0
       ? `Превышен лимит символов в поле на ${Math.abs(charsLeft)}`
@@ -15,20 +26,29 @@ const Textarea: FC<ITextareaProps> = ({ limit, value, name, error, label, onChan
   const isDangerBorder = { ...(charsLeft < 0 && { border: '2px solid #f59e0b' }) }
   const isErrorBorder = { ...(error && { border: '2px solid #b91c1c' }) }
 
+  const onKeyUpHandler = (event: KeyboardEvent<HTMLTextAreaElement>) => {
+    if (event.code === 'Enter' && onEnter) {
+      ref.current?.blur()
+      onEnter(event)
+    }
+  }
+
   return (
-    <div className='Textarea'>
+    <div className={classes}>
       {label && (
         <label className='Textarea-label' htmlFor={id}>
           {label}
         </label>
       )}
       <textarea
+        {...(label && { id })}
+        ref={ref}
         style={{ ...isErrorBorder, ...isDangerBorder }}
         className='Textarea-field'
         name={name}
-        id={id}
         value={value}
         onChange={onChange}
+        onKeyUp={onKeyUpHandler}
       ></textarea>
       {limit && (
         <div className='Textarea-limit' style={{ ...isDangerColor }}>

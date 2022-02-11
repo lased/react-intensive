@@ -4,7 +4,7 @@ interface IPopupProps {
   children: ReactElement
   isOpen: boolean
   content: ReactNode
-  onClickOutside?: (event: FocusEvent) => void
+  onClickOutside?: (event: MouseEvent) => void
 }
 
 export type { IPopupProps }
