@@ -1,6 +1,0 @@
-export { default as BasketItemBlock } from './BasketItemBlock'
-export { default as ButtonBlock } from './ButtonBlock'
-export { default as ImageBlock } from './ImageBlock'
-export { default as TitleBlock } from './TitleBlock'
-export { default as PriceBlock } from './PriceBlock'
-export { default as InputBlock } from './InputBlock'
