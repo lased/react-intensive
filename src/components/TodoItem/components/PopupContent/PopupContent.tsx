@@ -19,7 +19,7 @@ const PopupContent: FC<IPopupContentProps> = ({
         <img src={starIcon} alt='star' /> {todo.bookmark ? 'Убрать из избранного' : 'В избранное'}
       </Button>
       <Button secondary className='PopupContent-button' onClick={() => onSuccess(todo)}>
-        <img src={successIcon} alt='success' /> {todo.success ? 'Вернуть в работу' : 'Выполнено'}
+        <img src={successIcon} alt='success' /> {todo.completed ? 'Вернуть в работу' : 'Выполнено'}
       </Button>
       <Button primary className='PopupContent-button' onClick={() => onEdit(todo)}>
         <img src={pencilIcon} alt='pencil' /> Редактировать

@@ -1,4 +1,4 @@
-import { ITodo } from '../../models'
+import { ITodo } from 'models'
 
 type TTodoState = {
   list: ITodo[] | null

@@ -1,5 +1,5 @@
-import { ITodo } from '../../models'
-import { ETodoActionType } from '../types'
+import { ITodo } from 'models'
+import { ETodoActionType } from 'store'
 
 type TTodoActionCreate = {
   type: ETodoActionType.CREATE

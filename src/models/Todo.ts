@@ -1,7 +1,7 @@
 interface ITodo {
   id?: number
   text: string
-  success: boolean
+  completed: boolean
   bookmark: boolean
   createdAt: string
 }

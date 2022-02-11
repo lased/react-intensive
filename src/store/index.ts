@@ -1,4 +1,4 @@
-export { default as appStore } from './app'
-export * from './reducers'
-export * from './actions'
 export * from './types'
+export * from './actions'
+export * from './reducers'
+export * from './app'

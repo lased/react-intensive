@@ -30,7 +30,7 @@ const InputForm = () => {
       const newTodo: ITodo = {
         text: fields.text,
         bookmark: false,
-        success: false,
+        completed: false,
         createdAt: new Date().toISOString(),
       }
 

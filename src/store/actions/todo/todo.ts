@@ -1,14 +1,14 @@
 import { Dispatch } from 'redux'
 
-import { TodoService } from '../../services'
-import { ETodoActionType } from '../types'
-import { ITodo } from '../../models'
+import { TodoService } from 'services'
+import { ITodo } from 'models'
 import {
+  ETodoActionType,
   TTodoActionCreate,
   TTodoActionLoad,
   TTodoActionRemove,
   TTodoActionUpdate,
-} from './todo.types'
+} from 'store'
 
 const create = (todo: ITodo): TTodoActionCreate => ({
   type: ETodoActionType.CREATE,

@@ -1,10 +1,8 @@
-import { TTodoAction } from '../actions/todo.types'
-import { ETodoActionType } from '../types'
-import { TTodoState } from './todo.types'
+import { TTodoState, TTodoAction, ETodoActionType } from 'store'
 
 const initialState: TTodoState = { list: null }
 
-const todosReducer = (state = initialState, action: TTodoAction): TTodoState => {
+const todoReducer = (state = initialState, action: TTodoAction): TTodoState => {
   switch (action.type) {
     case ETodoActionType.CREATE:
       return {
@@ -33,4 +31,4 @@ const todosReducer = (state = initialState, action: TTodoAction): TTodoState => 
   }
 }
 
-export default todosReducer
+export default todoReducer
