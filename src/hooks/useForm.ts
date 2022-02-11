@@ -1,8 +1,7 @@
 import { useState } from 'react'
 
-import { TUseFormRules, TUseFormValues } from './useForm.types'
-import { TValidatorRule } from '../shared/classes/Validator.types'
-import { Validator } from '../shared'
+import { TUseFormRules, TUseFormValues } from 'hooks'
+import { Validator, TValidatorRule } from 'shared'
 
 const useForm = (values: TUseFormValues, rules: TUseFormRules) => {
   const [fields, setFields] = useState(values)

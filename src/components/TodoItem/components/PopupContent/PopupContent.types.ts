@@ -1,5 +1,3 @@
-import { MouseEvent } from 'react'
-
 import { ITodo } from 'models'
 
 interface IPopupContentProps {

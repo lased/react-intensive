@@ -1,4 +1,4 @@
-import { TValidatorRule } from './Validator.types'
+import { TValidatorRule } from 'shared'
 
 class Validator {
   message = ''

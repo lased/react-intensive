@@ -1,10 +1,10 @@
+import { createPortal } from 'react-dom'
 import { FC } from 'react'
 
 import { IModalProps } from './Modal.types'
-import { Button } from '../Button'
+import { Button } from 'shared'
 
 import './Modal.css'
-import { createPortal } from 'react-dom'
 
 const Modal: FC<IModalProps> = ({ isOpen, children, maxWidth, maxHeight, onClose }) => {
   const maxWidthStyle = { ...(maxWidth && { maxWidth }) }

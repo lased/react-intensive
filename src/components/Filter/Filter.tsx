@@ -1,9 +1,9 @@
 import { useDispatch } from 'react-redux'
 import { useState } from 'react'
 
+import { processIcon, starIcon, successIcon } from 'icons'
 import { EFilterStatus, FilterAction } from 'store'
 
-import { processIcon, starIcon, successIcon } from 'icons'
 import './Filter.css'
 
 const Filter = () => {

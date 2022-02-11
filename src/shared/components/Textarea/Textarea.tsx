@@ -1,4 +1,4 @@
-import { FC, memo, useRef, KeyboardEvent, forwardRef } from 'react'
+import { memo, KeyboardEvent, forwardRef } from 'react'
 
 import { ITextareaProps } from './Textarea.types'
 

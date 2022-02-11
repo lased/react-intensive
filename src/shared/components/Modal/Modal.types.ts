@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, MouseEvent } from 'react'
+import { MouseEvent } from 'react'
 
 interface IModalProps {
   isOpen: boolean

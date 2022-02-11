@@ -1,9 +1,9 @@
 import { FC } from 'react'
 
+import { pencilIcon, closeIcon, successIcon, starIcon } from 'icons'
 import { IPopupContentProps } from './PopupContent.types'
 import { Button } from 'shared'
 
-import { pencilIcon, closeIcon, successIcon, starIcon } from 'icons'
 import './PopupContent.css'
 
 const PopupContent: FC<IPopupContentProps> = ({

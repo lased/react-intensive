@@ -5,15 +5,28 @@
   border: none;
   color: #000;
   background-color: #fff;
+  position: relative;
+}
+
+.Button::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
 }
 
 .Button:hover {
   cursor: pointer;
-  opacity: 0.85;
+}
+
+.Button:hover::before {
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .Button:disabled {
-  opacity: 0.7;
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .Button-primary,

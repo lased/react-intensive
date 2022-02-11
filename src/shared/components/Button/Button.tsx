@@ -1,4 +1,4 @@
-import { FC, ForwardedRef, forwardRef, memo } from 'react'
+import { forwardRef, memo } from 'react'
 
 import { IButtonProps } from './Button.types'
 

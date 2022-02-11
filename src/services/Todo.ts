@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-import { ITodo } from '../models'
+import { ITodo } from 'models'
 import { API } from 'config'
 
 const update = (todo: ITodo) =>

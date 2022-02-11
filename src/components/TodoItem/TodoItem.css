@@ -1,24 +1,21 @@
 .TodoItem {
-  background-color: var(--background-color-30);
+  background-color: #15803d;
   color: var(--text-color-10);
   padding: 10px;
   border-radius: 5px;
-  margin: 10px 0;
+  margin: 5px 0;
   display: flex;
   align-items: center;
-  position: relative;
+  justify-content: space-between;
 }
 
 .TodoItem-options {
   background-color: transparent;
+  overflow: hidden;
   border-radius: 50%;
   width: 35px;
   height: 35px;
   padding: 5px;
-}
-
-.TodoItem-options:hover {
-  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .TodoItem > img {
@@ -26,16 +23,11 @@
 }
 
 .TodoItem-text {
-  margin: 0 auto 0 10px;
+  text-align: justify;
+  flex-basis: 80%;
 }
 
-.TodoItem-success::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 45px;
-  height: 2px;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: red;
+.TodoItem-success {
+  text-decoration: line-through;
+  background-color: #d32f2f;
 }

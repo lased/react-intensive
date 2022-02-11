@@ -6,7 +6,6 @@ import { ITodoItemProps } from './TodoItem.types'
 import { Button, Modal, Popup } from 'shared'
 import { dotsIcon, starIcon } from 'icons'
 import { TodosAction } from 'store'
-import { ITodo } from 'models'
 
 import './TodoItem.css'
 
@@ -20,11 +19,11 @@ const TodoItem: FC<ITodoItemProps> = ({ todo }) => {
   const togglePopupHandler = () => setShowPopup(!showPopup)
   const toggleIsEditHandler = () => setIsEdit(!isEdit)
   const toggleShowConfirmHandler = () => setIsOpenConfirm(!isOpenConfirm)
-  const onBookmarkHandler = (todo: ITodo) => {
+  const onBookmarkHandler = () => {
     dispatch(TodosAction.updateAsync({ ...todo, bookmark: !todo.bookmark }))
     togglePopupHandler()
   }
-  const onSuccessHandler = (todo: ITodo) => {
+  const onSuccessHandler = () => {
     dispatch(TodosAction.updateAsync({ ...todo, completed: !todo.completed }))
     togglePopupHandler()
   }
@@ -32,18 +31,18 @@ const TodoItem: FC<ITodoItemProps> = ({ todo }) => {
     dispatch(TodosAction.updateAsync({ ...todo, text: value }))
     toggleIsEditHandler()
   }
-  const onRemoveHandler = (todo: ITodo) => {
+  const onRemoveHandler = () => {
     dispatch(TodosAction.removeAsync(todo))
     togglePopupHandler()
-  }
-  const showConfirmModal = () => {
-    toggleShowConfirmHandler()
   }
   const updateTodo = () => {
     togglePopupHandler()
     toggleIsEditHandler()
   }
-
+  const showConfirmModal = () => {
+    toggleShowConfirmHandler()
+  }
+  
   return (
     <div className={className}>
       {isEdit ? (
