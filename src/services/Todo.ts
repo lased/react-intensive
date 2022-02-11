@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 import { ITodo } from '../models'
-import { API } from '.'
+import { API } from 'config'
 
 const update = (todo: ITodo) =>
   axios.put(`${API}/todos/${todo.id}`, todo).then(({ data }): ITodo => data)

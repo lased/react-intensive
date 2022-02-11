@@ -1,2 +1,2 @@
 export * as TodoService from './Todo'
-export * from './api'
+export * from '../config/API'

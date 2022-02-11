@@ -1,4 +1,4 @@
-import { ChangeEvent, FC } from 'react'
+import { ChangeEvent, FC, useEffect, useRef } from 'react'
 
 import { ITextFieldProps } from './TextField.types'
 import { TUseFormRules, useForm } from 'hooks'
@@ -10,6 +10,7 @@ const values = { text: '' }
 const rules: TUseFormRules = { text: ['required', { maxLength: 160 }] }
 
 const TextField: FC<ITextFieldProps> = ({ value, onEnter }) => {
+  const textareaRef = useRef<HTMLTextAreaElement | null>(null)
   const { fields, errors, changeField, checkAllFields } = useForm(
     { ...values, ...{ text: value } },
     rules
@@ -22,12 +23,21 @@ const TextField: FC<ITextFieldProps> = ({ value, onEnter }) => {
   }
   const onEnterHandler = () => {
     if (checkAllFields()) {
+      textareaRef.current?.blur()
       onEnter(fields.text.trim())
     }
   }
 
+  useEffect(() => {
+    if (textareaRef.current) {
+      textareaRef.current.focus()
+      textareaRef.current.selectionStart = textareaRef.current.value.length
+    }
+  }, [])
+
   return (
     <Textarea
+      ref={textareaRef}
       className='TextField'
       error={errors.text}
       limit={160}

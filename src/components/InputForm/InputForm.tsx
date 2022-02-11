@@ -31,6 +31,7 @@ const InputForm = () => {
         text: fields.text,
         bookmark: false,
         success: false,
+        createdAt: new Date().toISOString(),
       }
 
       clear()

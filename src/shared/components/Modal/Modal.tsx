@@ -4,8 +4,9 @@ import { IModalProps } from './Modal.types'
 import { Button } from '../Button'
 
 import './Modal.css'
+import { createPortal } from 'react-dom'
 
-const Modal: FC<Partial<IModalProps>> = ({ isOpen, children, maxWidth, maxHeight, onClose }) => {
+const Modal: FC<IModalProps> = ({ isOpen, children, maxWidth, maxHeight, onClose }) => {
   const maxWidthStyle = { ...(maxWidth && { maxWidth }) }
   const maxHeightStyle = { ...(maxHeight && { maxHeight }) }
 
@@ -13,7 +14,7 @@ const Modal: FC<Partial<IModalProps>> = ({ isOpen, children, maxWidth, maxHeight
     return null
   }
 
-  return (
+  return createPortal(
     <div className='Modal-container'>
       <div className='Modal-block' style={maxWidthStyle}>
         <Button className='Modal-close-btn' error onClick={onClose}>
@@ -23,7 +24,8 @@ const Modal: FC<Partial<IModalProps>> = ({ isOpen, children, maxWidth, maxHeight
           {children}
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   )
 }
 

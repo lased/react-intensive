@@ -3,6 +3,7 @@ interface ITodo {
   text: string
   success: boolean
   bookmark: boolean
+  createdAt: string
 }
 
 export type { ITodo }
