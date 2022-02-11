@@ -20,7 +20,7 @@ const Popup: FC<IPopupProps> = ({ children, isOpen, content, onClickOutside }) =
     }
   }
 
-  useEffect(() => setRectHandler(), [])
+  useEffect(() => setRectHandler(), [isOpen])
 
   useEffect(() => {
     window.addEventListener('click', onClickOutsideHandler)
