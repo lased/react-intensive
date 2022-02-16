@@ -1,0 +1,53 @@
+.Button {
+  padding: 10px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  color: #000;
+  background-color: #fff;
+  position: relative;
+}
+
+.Button::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+}
+
+.Button:hover {
+  cursor: pointer;
+}
+
+.Button:hover::before {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.Button:disabled {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.Button-primary,
+.Button-secondary,
+.Button-error,
+.Button-warning {
+  color: #fff;
+}
+
+.Button-primary {
+  background-color: #1d3960;
+}
+
+.Button-secondary {
+  background-color: #15803d;
+}
+
+.Button-error {
+  background-color: #d32f2f;
+}
+
+.Button-warning {
+  background-color: rgb(245, 158, 11);
+}

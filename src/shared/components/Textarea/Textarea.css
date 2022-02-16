@@ -1,0 +1,44 @@
+.Textarea {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+}
+
+.Textarea-label {
+  color: var(--text-color-10);
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.Textarea-field {
+  color: var(--text-color-10);
+  padding: 10px;
+  border-radius: 5px;
+  border: 2px solid var(--text-color-20);
+  outline: none;
+  background-color: transparent;
+  resize: vertical;
+  height: 50px;
+}
+
+.Textarea-field::placeholder {
+  color: var(--text-color-20);
+}
+
+.Textarea-limit {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: var(--text-color-30);
+  margin: 5px;
+}
+
+.Textarea-error {
+  padding: 5px 10px;
+  margin: 5px 0;
+  border: 2px solid #b91c1c;
+  color: #b91c1c;
+  border-radius: 5px;
+  background-color: var(--background-color-40);
+  font-weight: bold;
+}
+

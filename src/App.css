@@ -1,0 +1,13 @@
+.App {
+  min-height: 100vh;
+  background-color: var(--background-color-10);
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.Container {
+  max-width: 500px;
+  width: 100%;
+}

@@ -1,0 +1,24 @@
+.InputForm {
+  background-color: var(--background-color-30);
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+}
+
+.InputForm > .Textarea {
+  margin: 0;
+  flex-grow: 1;
+}
+
+.InputForm > .Textarea > .Textarea-field {
+  height: 100px;
+  resize: none;
+}
+
+.InputForm > .Button {
+  margin: 0 0 0 5px;
+  width: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,19 @@
+.Todo {
+  margin: 20px 0;
+}
+
+.TodoList {
+  display: flex;
+  flex-direction: column-reverse;
+  margin-top: 5px;
+}
+
+.Todo > strong {
+  background-color: var(--background-color-30);
+  color: var(--text-color-10);
+  padding: 10px;
+  border-radius: 5px;
+  display: block;
+  text-align: center;
+  margin: 10px 0;
+}

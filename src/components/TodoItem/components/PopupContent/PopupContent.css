@@ -1,0 +1,17 @@
+.PopupContent {
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.PopupContent-button {
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+}
+
+.PopupContent-button > img {
+  width: 20px;
+  margin-right: 10px;
+}
