@@ -14,7 +14,7 @@ const typeButton = {
 const Button = forwardRef<HTMLButtonElement, Partial<IButtonProps>>(
   ({ className, secondary, children, warning, primary, error, type, onClick }, ref) => {
     const customClassName = [
-      className,
+      ...(className ? [className] : []),
       'Button',
       ...((primary && typeButton.primary) ||
         (secondary && typeButton.secondary) ||

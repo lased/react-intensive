@@ -39,7 +39,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, ITextareaProps>(
           value={value}
           onChange={onChange}
           onKeyUp={onKeyUpHandler}
-        ></textarea>
+        />
         {limit && (
           <div className='Textarea-limit' style={{ ...isDangerColor }}>
             {limitText}
