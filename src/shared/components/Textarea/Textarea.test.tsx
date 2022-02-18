@@ -33,7 +33,7 @@ describe('textarea with props', () => {
   it('textarea with limit', () => {
     const handleChange = jest.fn()
 
-    render(<Textarea limit={2} name='test' value='test' onChange={handleChange} />)
+    render(<Textarea limit={2} error='error' name='test' value='test' onChange={handleChange} />)
 
     const limit = screen.getByText(/2/)
     const error = screen.queryByText('error')

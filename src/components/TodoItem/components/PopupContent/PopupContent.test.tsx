@@ -2,7 +2,6 @@ import { render, screen } from '@testing-library/react'
 
 import PopupContent from './PopupContent'
 import { ITodo } from 'models'
-import { Helper } from 'shared'
 import userEvent from '@testing-library/user-event'
 
 const todo: ITodo = Object.freeze({

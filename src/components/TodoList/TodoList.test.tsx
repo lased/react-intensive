@@ -1,5 +1,5 @@
-import { applyMiddleware, combineReducers, createStore, Store, Dispatch, AnyAction } from 'redux'
-import { render, screen, waitFor } from '@testing-library/react'
+import { applyMiddleware, combineReducers, createStore, Store } from 'redux'
+import { render, screen } from '@testing-library/react'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 
@@ -33,7 +33,7 @@ beforeEach(() => {
   )
 })
 
-describe('asd', () => {
+describe('test content', () => {
   it('load status', () => {
     mockTodosAction.loadAsync.mockImplementation(() => () => true as any)
     render(wrapper)

@@ -6,7 +6,7 @@ import { createStore, Store } from 'redux'
 import { EFilterStatus, filterReducer } from 'store'
 import Filter from './Filter'
 
-let filterStore = createStore(filterReducer)
+let filterStore = {} as Store
 let wrapper = <></>
 
 beforeEach(() => {
@@ -33,7 +33,7 @@ describe('without events', () => {
   })
 })
 describe('with events', () => {
-  it('check useDispatch', () => {
+  it('check store state', () => {
     render(wrapper)
 
     const bookmark = screen.getByText(/Избранные задачи/i)
