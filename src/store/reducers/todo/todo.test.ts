@@ -29,9 +29,6 @@ beforeEach(() => {
     },
   ]
 })
-afterEach(() => {
-  todos = []
-})
 
 it('create action', () => {
   const state = todoReducer({ list: [] }, { type: ETodoActionType.CREATE, payload: todos[0] })

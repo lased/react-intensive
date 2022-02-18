@@ -1,8 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 
-import { AppStoreState, EFilterStatus, TodosAction } from 'store'
+import { EFilterStatus, TodosAction } from 'store'
 import { Filter, TodoItem } from 'components'
+import { AppStoreState } from 'store/app'
 import { ITodo } from 'models'
 
 import './TodoList.css'
@@ -24,7 +25,7 @@ const TodoList = () => {
         return true
     }
   }
-  const filtredTodos = todos.list?.filter(filterFn)
+  const filteredTodos = todos.list?.filter(filterFn)
 
   useEffect(() => {
     dispatch(TodosAction.loadAsync())
@@ -33,10 +34,11 @@ const TodoList = () => {
   return (
     <div className='Todo'>
       {todos.list && !!todos.list.length && <Filter />}
-      {filtredTodos && !filtredTodos.length && <strong>Список задач пуст</strong>}
-      {!filtredTodos && <strong>Загрузка...</strong>}
+      {filteredTodos && !filteredTodos.length && <strong>Список задач пуст</strong>}
+      {!filteredTodos && <strong>Загрузка...</strong>}
       <div className='TodoList'>
-        {filtredTodos && filtredTodos.map((todo) => <TodoItem key={todo.id} todo={todo} />)}
+        {filteredTodos &&
+          filteredTodos.map((todo: ITodo) => <TodoItem key={todo.id} todo={todo} />)}
       </div>
     </div>
   )

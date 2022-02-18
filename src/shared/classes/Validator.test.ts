@@ -6,9 +6,7 @@ describe('validator class', () => {
   beforeEach(() => {
     validator = new Validator()
   })
-  afterEach(() => {
-    validator = null
-  })
+
   it('required without error', () => {
     expect(validator?.validate('test', ['required'])).toBeTruthy()
     expect(validator?.getErrorMessage()).toBe('')

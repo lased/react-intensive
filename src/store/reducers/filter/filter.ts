@@ -1,4 +1,6 @@
-import { EFilterActionType, EFilterStatus, TFilterAction, TFilterState } from 'store'
+import { EFilterActionType, EFilterStatus } from 'store/types'
+import { TFilterAction } from 'store/actions'
+import { TFilterState } from './filter.types'
 
 const initialState: TFilterState = { status: EFilterStatus.ALL }
 
