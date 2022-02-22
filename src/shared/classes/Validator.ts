@@ -9,7 +9,6 @@ class Validator {
         this.message = 'Поле пустое. Заполните пожалуйста'
       } else if (
         rule === 'firstCharInUpperСase' &&
-        typeof value === 'string' &&
         value.length &&
         value[0] !== value[0].toUpperCase()
       ) {

@@ -1,9 +1,8 @@
-import { ChangeEvent, FormEvent } from 'react'
-import { useDispatch } from 'react-redux'
+import { ChangeEvent, FC, FormEvent } from 'react'
 
+import { IInputFormProps } from './InputForm.type'
 import { TUseFormRules, useForm } from 'hooks'
 import { Button, Textarea } from 'shared'
-import { TodosAction } from 'store'
 import { createIcon } from 'icons'
 import { ITodo } from 'models'
 
@@ -12,9 +11,8 @@ import './InputForm.css'
 const values = { text: '' }
 const rules: TUseFormRules = { text: ['required', { maxLength: 160 }] }
 
-const InputForm = () => {
+const InputForm: FC<IInputFormProps> = ({ onSubmit }) => {
   const { fields, errors, changeField, checkAllFields, clear } = useForm(values, rules)
-  const dispatch = useDispatch()
 
   const onChangeHandler = (event: ChangeEvent<HTMLTextAreaElement>) => {
     const { value, name } = event.target
@@ -35,7 +33,7 @@ const InputForm = () => {
       }
 
       clear()
-      dispatch(TodosAction.createAsync(newTodo))
+      onSubmit?.(newTodo)
     }
   }
 
